@@ -23,6 +23,7 @@ if not exist "%SLUGFONT%" (
 )
 
 set "MARUBURI_SEMIBOLD=%KRFONTDIR%\마루 부리\MaruBuriOTF\MaruBuri-SemiBold.otf"
+set "MARUBURI_CNKR=%KRFONTDIR%\MaruBuri-CNKR.otf"
 set "JALNAN=%KRFONTDIR%\여기어때 잘난체\JalnanGothic.otf"
 
 if not exist "%MARUBURI_SEMIBOLD%" (
@@ -35,24 +36,34 @@ if not exist "%JALNAN%" (
     exit /b 1
 )
 
+:: Generate CNKR font if not exists (Korean glyphs at CJK codepoints for Bridge compatibility)
+if not exist "%MARUBURI_CNKR%" (
+    echo [TamrielKR] Generating CNKR font...
+    python "%~dp0generate_cnkr_font.py" "%MARUBURI_SEMIBOLD%" "%MARUBURI_CNKR%"
+    if errorlevel 1 (
+        echo Failed to generate CNKR font. Using original MaruBuri.
+        set "MARUBURI_CNKR=%MARUBURI_SEMIBOLD%"
+    )
+)
+
 echo [TamrielKR] Generating slug fonts
-echo [TamrielKR] Base font: MaruBuri SemiBold
+echo [TamrielKR] Base font: MaruBuri SemiBold (CNKR)
 echo [TamrielKR] Title font: Jalnan Gothic
 echo [TamrielKR] Output directory: %OUTDIR%
 echo.
 
-:: MaruBuri SemiBold - primary slugs
-call :generate "%MARUBURI_SEMIBOLD%" "%OUTDIR%\ftn47.slug"
-call :generate "%MARUBURI_SEMIBOLD%" "%OUTDIR%\ftn57.slug"
-call :generate "%MARUBURI_SEMIBOLD%" "%OUTDIR%\proseantiquepsmt.slug"
-call :generate "%MARUBURI_SEMIBOLD%" "%OUTDIR%\univers47.slug"
-call :generate "%MARUBURI_SEMIBOLD%" "%OUTDIR%\univers55.slug"
-call :generate "%MARUBURI_SEMIBOLD%" "%OUTDIR%\univers57.slug"
+:: MaruBuri CNKR - primary slugs (CJK codepoints에 한글 글리프 포함)
+call :generate "%MARUBURI_CNKR%" "%OUTDIR%\ftn47.slug"
+call :generate "%MARUBURI_CNKR%" "%OUTDIR%\ftn57.slug"
+call :generate "%MARUBURI_CNKR%" "%OUTDIR%\proseantiquepsmt.slug"
+call :generate "%MARUBURI_CNKR%" "%OUTDIR%\univers47.slug"
+call :generate "%MARUBURI_CNKR%" "%OUTDIR%\univers55.slug"
+call :generate "%MARUBURI_CNKR%" "%OUTDIR%\univers57.slug"
 
-:: MaruBuri SemiBold - Korean backup slugs
-call :generate "%MARUBURI_SEMIBOLD%" "%OUTDIR%\kr_maruburi.slug"
-call :generate "%MARUBURI_SEMIBOLD%" "%OUTDIR%\kr_gothic.slug"
-call :generate "%MARUBURI_SEMIBOLD%" "%OUTDIR%\kr_gothic_bold.slug"
+:: MaruBuri CNKR - Korean backup slugs
+call :generate "%MARUBURI_CNKR%" "%OUTDIR%\kr_maruburi.slug"
+call :generate "%MARUBURI_CNKR%" "%OUTDIR%\kr_gothic.slug"
+call :generate "%MARUBURI_CNKR%" "%OUTDIR%\kr_gothic_bold.slug"
 
 :: Jalnan Gothic - title/emphasis
 call :generate "%JALNAN%" "%OUTDIR%\ftn87.slug"

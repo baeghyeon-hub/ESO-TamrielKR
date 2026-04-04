@@ -361,6 +361,19 @@ SLASH_COMMANDS["/tkbridge"] = function()
   else
     d("  encode test: FAIL")
   end
+  -- edit box 실제 내용 확인
+  if CHAT_SYSTEM and CHAT_SYSTEM.textEntry and CHAT_SYSTEM.textEntry.editControl then
+    local raw = CHAT_SYSTEM.textEntry.editControl:GetText()
+    if raw and raw ~= "" then
+      local bytes = {}
+      for i = 1, math.min(#raw, 30) do
+        bytes[#bytes + 1] = string.format("%02X", string.byte(raw, i))
+      end
+      d("  editbox bytes: " .. table.concat(bytes, " "))
+    else
+      d("  editbox: (empty)")
+    end
+  end
 end
 
 EVENT_MANAGER:RegisterForEvent(Bridge.name, EVENT_ADD_ON_LOADED, OnAddonLoaded)
