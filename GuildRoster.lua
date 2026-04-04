@@ -121,19 +121,21 @@ local function FixGuildRosterLevelLabel(control)
 end
 
 local function RefreshVisibleGuildRosterLevels()
-  for globalName, value in pairs(_G) do
-    if type(globalName) == "string" then
-      if globalName:match(GUILD_ROSTER_ROW_PATTERN) then
-        if type(value) == "userdata" and value.GetNamedChild then
-          local level = value:GetNamedChild("Level")
-          if level then
-            FixGuildRosterLevelLabel(level)
-          end
+  -- _G를 순회하지 않고 예상되는 컨트롤 이름을 직접 조회
+  -- (pairs(_G)는 보호 함수 값 접근 시 taint 에러 발생)
+  for list = 1, 5 do
+    for row = 1, 30 do
+      local rowName = "ZO_GuildRosterList" .. list .. "Row" .. row
+      local rowCtrl = rawget(_G, rowName)
+      if rowCtrl and type(rowCtrl) == "userdata" and rowCtrl.GetNamedChild then
+        local level = rowCtrl:GetNamedChild("Level")
+        if level then
+          FixGuildRosterLevelLabel(level)
         end
-      elseif globalName:match(GUILD_ROSTER_LEVEL_PATTERN) then
-        if type(value) == "userdata" then
-          FixGuildRosterLevelLabel(value)
-        end
+      end
+      local levelCtrl = rawget(_G, rowName .. "Level")
+      if levelCtrl and type(levelCtrl) == "userdata" then
+        FixGuildRosterLevelLabel(levelCtrl)
       end
     end
   end
