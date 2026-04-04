@@ -365,18 +365,23 @@ SLASH_COMMANDS["/tkbridge"] = function()
   d("  SendChatMessage: " .. info)
 end
 
--- /tktest: say채널로 인코딩된 테스트 메시지 전송 (EsoKR 유저가 읽을 수 있는지 확인용)
+-- /tktest: 현재 채널로 인코딩된 테스트 메시지 전송 (EsoKR 유저가 읽을 수 있는지 확인용)
 SLASH_COMMANDS["/tktest"] = function()
   local test = "브릿지테스트"
   local encoded = EncodeCNKR(test)
-  d("[Bridge] sending encoded test to /group")
+  local channel = CHAT_SYSTEM and CHAT_SYSTEM.currentChannel
+  local target = CHAT_SYSTEM and CHAT_SYSTEM.currentTarget or ""
+  if not channel then
+    d("[Bridge] ERROR: cannot get current channel")
+    return
+  end
+  d("[Bridge] sending to channel: " .. tostring(channel))
   local bytes = {}
   for i = 1, #encoded do
     bytes[#bytes + 1] = string.format("%02X", string.byte(encoded, i))
   end
   d("[Bridge] bytes: " .. table.concat(bytes, " "))
-  -- 이미 CJK인 텍스트는 EncodeCNKR이 no-op이므로 이중 인코딩 안전
-  SendChatMessage(encoded, CHAT_CHANNEL_PARTY, "")
+  SendChatMessage(encoded, channel, target)
 end
 
 EVENT_MANAGER:RegisterForEvent(Bridge.name, EVENT_ADD_ON_LOADED, OnAddonLoaded)
