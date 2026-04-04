@@ -190,7 +190,7 @@ function Bridge:HookChatSend()
     return
   end
 
-  if not CHAT_SYSTEM then
+  if not CHAT_ROUTER then
     self.chatSendRetryCount = (self.chatSendRetryCount or 0) + 1
     if self.chatSendRetryCount <= 10 then
       zo_callLater(function()
@@ -202,29 +202,14 @@ function Bridge:HookChatSend()
 
   self.chatSendHooked = true
 
-  -- 방법 1: OnTextEntryExecute 오버라이드
-  if CHAT_SYSTEM.OnTextEntryExecute then
-    local origExecute = CHAT_SYSTEM.OnTextEntryExecute
-    CHAT_SYSTEM.OnTextEntryExecute = function(chatSystem, text)
-      return origExecute(chatSystem, EncodeCNKR(text))
+  -- CHAT_ROUTER를 직접 훅 — 모든 채팅 전송이 여기를 통과
+  ZO_PreHook(CHAT_ROUTER, "SendChatMessage", function(router, text)
+    local encoded = EncodeCNKR(text)
+    if encoded ~= text then
+      router:SendChatMessage(encoded)
+      return true
     end
-    return
-  end
-
-  -- 방법 2: textEntry의 텍스트를 전송 직전에 변환
-  if CHAT_SYSTEM.textEntry then
-    local textEntry = CHAT_SYSTEM.textEntry
-    local origGetText = textEntry.GetText
-    if origGetText then
-      textEntry.GetText = function(entry)
-        local text = origGetText(entry)
-        if text and text ~= "" then
-          return EncodeCNKR(text)
-        end
-        return text
-      end
-    end
-  end
+  end)
 end
 
 -- ============================================================
@@ -353,6 +338,13 @@ local function OnAddonLoaded(_, addonName)
 
   Bridge:HookChatReceive()
   Bridge:HookChatSend()
+end
+
+SLASH_COMMANDS["/tkbridge"] = function()
+  d("[TamrielKR_Bridge]")
+  d("  chatReceiveHooked: " .. tostring(Bridge.chatReceiveHooked))
+  d("  chatSendHooked: " .. tostring(Bridge.chatSendHooked))
+  d("  guildHooked: " .. tostring(Bridge.guildHooked))
 end
 
 EVENT_MANAGER:RegisterForEvent(Bridge.name, EVENT_ADD_ON_LOADED, OnAddonLoaded)
