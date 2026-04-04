@@ -341,10 +341,18 @@ local function OnAddonLoaded(_, addonName)
 end
 
 SLASH_COMMANDS["/tkbridge"] = function()
-  d("[TamrielKR_Bridge]")
+  d("[TamrielKR_Bridge v1.0.1]")
   d("  chatReceiveHooked: " .. tostring(Bridge.chatReceiveHooked))
   d("  chatSendHooked: " .. tostring(Bridge.chatSendHooked))
   d("  guildHooked: " .. tostring(Bridge.guildHooked))
+  -- 인코딩 테스트
+  local test = "테스트"
+  local encoded = EncodeCNKR(test)
+  if encoded ~= test then
+    d("  encode test: OK")
+  else
+    d("  encode test: FAIL")
+  end
 end
 
 EVENT_MANAGER:RegisterForEvent(Bridge.name, EVENT_ADD_ON_LOADED, OnAddonLoaded)
