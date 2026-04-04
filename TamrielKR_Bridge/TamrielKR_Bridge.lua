@@ -369,15 +369,14 @@ end
 SLASH_COMMANDS["/tktest"] = function()
   local test = "브릿지테스트"
   local encoded = EncodeCNKR(test)
-  d("[Bridge] sending encoded test to /say")
+  d("[Bridge] sending encoded test to /group")
   local bytes = {}
   for i = 1, #encoded do
     bytes[#bytes + 1] = string.format("%02X", string.byte(encoded, i))
   end
   d("[Bridge] bytes: " .. table.concat(bytes, " "))
-  -- origSendChatMessage 대신 현재 글로벌 SendChatMessage 사용
-  -- 이미 CJK인 텍스트는 EncodeCNKR이 no-op이므로 안전
-  SendChatMessage(encoded, CHAT_CHANNEL_SAY, "")
+  -- 이미 CJK인 텍스트는 EncodeCNKR이 no-op이므로 이중 인코딩 안전
+  SendChatMessage(encoded, CHAT_CHANNEL_PARTY, "")
 end
 
 EVENT_MANAGER:RegisterForEvent(Bridge.name, EVENT_ADD_ON_LOADED, OnAddonLoaded)
