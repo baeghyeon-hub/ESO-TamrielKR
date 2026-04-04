@@ -22,10 +22,35 @@ import sys
 import os
 
 
+def find_text_section_offset(data: bytes) -> int:
+    """바이너리 인덱스 섹션 이후 텍스트 데이터가 시작되는 오프셋을 찾는다.
+
+    ESO .lang 파일은 바이너리 인덱스(16바이트 레코드) + 텍스트 데이터(null-terminated 문자열)로 구성됨.
+    바이너리 인덱스 영역의 null 바이트 밀도가 텍스트 영역보다 훨씬 높은 점을 이용하여 경계를 탐지.
+    """
+    WINDOW = 1024
+    # 바이너리 인덱스: null 밀도 ~300+/1KB, 텍스트: ~3-30/1KB
+    THRESHOLD = 100
+
+    prev_nulls = WINDOW  # 파일 시작은 바이너리
+    for offset in range(0, len(data) - WINDOW, WINDOW):
+        nulls = data[offset:offset + WINDOW].count(0)
+        if prev_nulls >= THRESHOLD and nulls < THRESHOLD:
+            # 경계 발견 — 이 블록의 시작점부터 텍스트 섹션
+            return offset
+        prev_nulls = nulls
+
+    # 경계를 찾지 못한 경우 (순수 텍스트 파일 등) 처음부터 변환
+    return 0
+
+
 def convert_cjk_to_korean(data: bytes) -> bytes:
-    """CJK 인코딩된 바이트를 네이티브 한글 UTF-8로 변환"""
-    result = bytearray()
-    i = 0
+    """CJK 인코딩된 바이트를 네이티브 한글 UTF-8로 변환 (텍스트 섹션만)"""
+    text_start = find_text_section_offset(data)
+
+    # 바이너리 헤더는 그대로 보존
+    result = bytearray(data[:text_start])
+    i = text_start
     converted = 0
 
     while i < len(data):

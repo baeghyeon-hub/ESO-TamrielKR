@@ -43,8 +43,7 @@ def main():
                 glyph = table.cmap.get(cp)
                 if glyph:
                     cnkr_cp = cp + offset
-                    if cnkr_cp not in table.cmap:
-                        new_entries[cnkr_cp] = glyph
+                    new_entries[cnkr_cp] = glyph  # 기존 한자 글리프 덮어쓰기
 
         table.cmap.update(new_entries)
         if new_entries:
