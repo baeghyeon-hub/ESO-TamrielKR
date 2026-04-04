@@ -122,12 +122,11 @@ C:\Users\<사용자>\Documents\Elder Scrolls Online\live\AddOns\
    >
    > CJK → UTF-8 변환이 되지 않은 lang 파일을 그대로 사용하면 한글이 중국어 글자로 표시됩니다.
 
-   변환 도구가 `tools/convert_cnkr_to_utf8.py`에 포함되어 있습니다:
-   ```bash
-   python tools/convert_cnkr_to_utf8.py kr.lang kr_utf8.lang
-   ```
-
-   변환한 `kr.lang` 파일을 `AddOns\gamedata\lang\kr.lang`에 넣어주세요.
+   **변환 방법:**
+   1. [Releases](https://github.com/baeghyeon-hub/ESO-TamrielKR/releases)에서 `convert_cnkr_to_utf8.zip` 다운로드
+   2. 압축 해제 후 같은 폴더에 EsoKR용 `kr.lang` 파일을 넣기
+   3. `convert_cnkr_to_utf8.bat` 실행 (더블클릭)
+   4. 변환된 `kr.lang`을 `AddOns\gamedata\lang\`에 복사
 
 4. 게임 실행 후 애드온 목록에서 TamrielKR, TamrielKR_Bridge 활성화
 
