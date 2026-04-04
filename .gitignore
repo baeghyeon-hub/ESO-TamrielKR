@@ -13,6 +13,9 @@ gamedata/
 # Addon patch zips (build artifacts)
 Addon PATCHES/*.zip
 
+# Internal docs
+DOCS/
+
 # Claude Code
 .claude/
 
