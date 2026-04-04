@@ -354,6 +354,30 @@ SLASH_COMMANDS["/tkbridge"] = function()
   else
     d("  encode test: FAIL")
   end
+  -- 인코딩 바이트 확인
+  local bytes = {}
+  for i = 1, #encoded do
+    bytes[#bytes + 1] = string.format("%02X", string.byte(encoded, i))
+  end
+  d("  encoded bytes: " .. table.concat(bytes, " "))
+  -- SendChatMessage 훅 확인
+  local info = tostring(SendChatMessage)
+  d("  SendChatMessage: " .. info)
+end
+
+-- /tktest: say채널로 인코딩된 테스트 메시지 전송 (EsoKR 유저가 읽을 수 있는지 확인용)
+SLASH_COMMANDS["/tktest"] = function()
+  local test = "브릿지테스트"
+  local encoded = EncodeCNKR(test)
+  d("[Bridge] sending encoded test to /say")
+  local bytes = {}
+  for i = 1, #encoded do
+    bytes[#bytes + 1] = string.format("%02X", string.byte(encoded, i))
+  end
+  d("[Bridge] bytes: " .. table.concat(bytes, " "))
+  -- origSendChatMessage 대신 현재 글로벌 SendChatMessage 사용
+  -- 이미 CJK인 텍스트는 EncodeCNKR이 no-op이므로 안전
+  SendChatMessage(encoded, CHAT_CHANNEL_SAY, "")
 end
 
 EVENT_MANAGER:RegisterForEvent(Bridge.name, EVENT_ADD_ON_LOADED, OnAddonLoaded)
