@@ -190,27 +190,41 @@ function Bridge:HookChatSend()
     return
   end
 
-  self.chatSendHooked = true
-
-  -- 1차: 글로벌 SendChatMessage 훅
-  local origSendChatMessage = SendChatMessage
-  SendChatMessage = function(text, channel, target, ...)
-    return origSendChatMessage(EncodeCNKR(text), channel, target, ...)
+  if not CHAT_SYSTEM then
+    self.chatSendRetryCount = (self.chatSendRetryCount or 0) + 1
+    if self.chatSendRetryCount <= 10 then
+      zo_callLater(function()
+        Bridge:HookChatSend()
+      end, 1000)
+    end
+    return
   end
 
-  -- 2차: 채팅 입력창 실행 훅 (pChat 등이 SendChatMessage를 우회하는 경우 대비)
-  -- EncodeCNKR은 이미 CJK인 텍스트에는 no-op이므로 이중 인코딩 문제 없음
-  ZO_PreHook("ZO_ChatTextEntry_Execute", function(self)
-    if self.GetText and self.SetText then
-      local text = self:GetText()
-      if text and text ~= "" then
-        local encoded = EncodeCNKR(text)
-        if encoded ~= text then
-          self:SetText(encoded)
+  self.chatSendHooked = true
+
+  -- 방법 1: CHAT_SYSTEM.OnTextEntryExecute 오버라이드
+  if CHAT_SYSTEM.OnTextEntryExecute then
+    local origExecute = CHAT_SYSTEM.OnTextEntryExecute
+    CHAT_SYSTEM.OnTextEntryExecute = function(chatSystem, text)
+      return origExecute(chatSystem, EncodeCNKR(text))
+    end
+    return
+  end
+
+  -- 방법 2: textEntry.GetText를 훅하여 전송 직전에 변환
+  if CHAT_SYSTEM.textEntry then
+    local textEntry = CHAT_SYSTEM.textEntry
+    local origGetText = textEntry.GetText
+    if origGetText then
+      textEntry.GetText = function(entry)
+        local text = origGetText(entry)
+        if text and text ~= "" then
+          return EncodeCNKR(text)
         end
+        return text
       end
     end
-  end)
+  end
 end
 
 -- ============================================================
@@ -342,7 +356,7 @@ local function OnAddonLoaded(_, addonName)
 end
 
 SLASH_COMMANDS["/tkbridge"] = function()
-  d("[TamrielKR_Bridge v1.0.3]")
+  d("[TamrielKR_Bridge v1.0.4]")
   d("  chatReceiveHooked: " .. tostring(Bridge.chatReceiveHooked))
   d("  chatSendHooked: " .. tostring(Bridge.chatSendHooked))
   d("  guildHooked: " .. tostring(Bridge.guildHooked))
@@ -354,34 +368,6 @@ SLASH_COMMANDS["/tkbridge"] = function()
   else
     d("  encode test: FAIL")
   end
-  -- 인코딩 바이트 확인
-  local bytes = {}
-  for i = 1, #encoded do
-    bytes[#bytes + 1] = string.format("%02X", string.byte(encoded, i))
-  end
-  d("  encoded bytes: " .. table.concat(bytes, " "))
-  -- SendChatMessage 훅 확인
-  local info = tostring(SendChatMessage)
-  d("  SendChatMessage: " .. info)
-end
-
--- /tktest: 현재 채널로 인코딩된 테스트 메시지 전송 (EsoKR 유저가 읽을 수 있는지 확인용)
-SLASH_COMMANDS["/tktest"] = function()
-  local test = "브릿지테스트"
-  local encoded = EncodeCNKR(test)
-  local channel = CHAT_SYSTEM and CHAT_SYSTEM.currentChannel
-  local target = CHAT_SYSTEM and CHAT_SYSTEM.currentTarget or ""
-  if not channel then
-    d("[Bridge] ERROR: cannot get current channel")
-    return
-  end
-  d("[Bridge] sending to channel: " .. tostring(channel))
-  local bytes = {}
-  for i = 1, #encoded do
-    bytes[#bytes + 1] = string.format("%02X", string.byte(encoded, i))
-  end
-  d("[Bridge] bytes: " .. table.concat(bytes, " "))
-  SendChatMessage(encoded, channel, target)
 end
 
 EVENT_MANAGER:RegisterForEvent(Bridge.name, EVENT_ADD_ON_LOADED, OnAddonLoaded)
