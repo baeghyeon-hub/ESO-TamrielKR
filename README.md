@@ -162,7 +162,23 @@ tools\generate_slugs.bat "C:\...\game\client\slugfont.exe"
 
 ## 서드파티 애드온 한글 패치
 
-`Addon PATCHES/` 폴더에 개별 애드온 한글 패치가 포함되어 있습니다. 필요한 패치의 zip 파일을 받아 기존 애드온 폴더에 덮어 쓰세요.
+`Addon PATCHES/` 폴더에 개별 애드온 한글 패치가 포함되어 있습니다. 필요한 패치를 받아 기존 애드온 폴더에 덮어 쓰세요.
+
+| 애드온 | 설명 |
+|---|---|
+| ActionDurationReminder | 버프/디버프 지속시간 알림 |
+| Azurah | UI 커스터마이징 |
+| BanditsUserInterface | 올인원 UI 개선 |
+| Destinations | 목적지/여행 가이드 |
+| FancyActionBar+ | 액션바 강화 |
+| HarvestMap | 채집 위치 지도 |
+| LibAddonMenu-2.0 | 애드온 설정 메뉴 라이브러리 |
+| LibSavedVars | 저장 변수 라이브러리 |
+| LostTreasure | 보물 지도 위치 |
+| pChat | 채팅 기능 강화 |
+| TamrielTradeCentre (TTC) | 거래소 가격 검색 |
+| USPF | 스킬/CP 세팅 공유 |
+| VotansMiniMap | 미니맵 |
 
 ---
 
