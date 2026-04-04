@@ -192,11 +192,25 @@ function Bridge:HookChatSend()
 
   self.chatSendHooked = true
 
-  -- 글로벌 SendChatMessage 훅 — 모든 채팅 전송이 여기를 통과
+  -- 1차: 글로벌 SendChatMessage 훅
   local origSendChatMessage = SendChatMessage
   SendChatMessage = function(text, channel, target, ...)
     return origSendChatMessage(EncodeCNKR(text), channel, target, ...)
   end
+
+  -- 2차: 채팅 입력창 실행 훅 (pChat 등이 SendChatMessage를 우회하는 경우 대비)
+  -- EncodeCNKR은 이미 CJK인 텍스트에는 no-op이므로 이중 인코딩 문제 없음
+  ZO_PreHook("ZO_ChatTextEntry_Execute", function(self)
+    if self.GetText and self.SetText then
+      local text = self:GetText()
+      if text and text ~= "" then
+        local encoded = EncodeCNKR(text)
+        if encoded ~= text then
+          self:SetText(encoded)
+        end
+      end
+    end
+  end)
 end
 
 -- ============================================================
@@ -328,7 +342,7 @@ local function OnAddonLoaded(_, addonName)
 end
 
 SLASH_COMMANDS["/tkbridge"] = function()
-  d("[TamrielKR_Bridge v1.0.2]")
+  d("[TamrielKR_Bridge v1.0.3]")
   d("  chatReceiveHooked: " .. tostring(Bridge.chatReceiveHooked))
   d("  chatSendHooked: " .. tostring(Bridge.chatSendHooked))
   d("  guildHooked: " .. tostring(Bridge.guildHooked))
