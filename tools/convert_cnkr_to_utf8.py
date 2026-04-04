@@ -73,24 +73,24 @@ def convert_cjk_to_korean(data: bytes) -> bytes:
 
 def main():
     if len(sys.argv) < 2:
-        print("EsoKR CJK → UTF-8 한글 변환기")
+        print("EsoKR CJK -> UTF-8 Korean Converter")
         print()
-        print("사용법: python convert_cnkr_to_utf8.py <입력파일> [출력파일]")
+        print("Usage: python convert_cnkr_to_utf8.py <input> [output]")
         print()
-        print("예시:")
+        print("Examples:")
         print("  python convert_cnkr_to_utf8.py kr.lang kr_utf8.lang")
-        print("  python convert_cnkr_to_utf8.py kr.lang  (원본 덮어쓰기)")
+        print("  python convert_cnkr_to_utf8.py kr.lang  (overwrite)")
         sys.exit(1)
 
     input_path = sys.argv[1]
     output_path = sys.argv[2] if len(sys.argv) > 2 else input_path
 
     if not os.path.exists(input_path):
-        print(f"파일을 찾을 수 없습니다: {input_path}")
+        print(f"File not found: {input_path}")
         sys.exit(1)
 
     file_size = os.path.getsize(input_path)
-    print(f"읽는 중: {input_path} ({file_size / 1024 / 1024:.1f} MB)")
+    print(f"Reading: {input_path} ({file_size / 1024 / 1024:.1f} MB)")
 
     with open(input_path, "rb") as f:
         data = f.read()
@@ -98,14 +98,14 @@ def main():
     result, converted = convert_cjk_to_korean(data)
 
     if converted == 0:
-        print("CJK 인코딩된 한글이 없습니다. 이미 UTF-8일 수 있습니다.")
+        print("No CJK-encoded Korean found. File may already be UTF-8.")
         sys.exit(0)
 
     with open(output_path, "wb") as f:
         f.write(result)
 
-    print(f"변환 완료: {converted}개 문자 변환")
-    print(f"저장: {output_path}")
+    print(f"Converted {converted:,} characters")
+    print(f"Saved: {output_path}")
 
 
 if __name__ == "__main__":
