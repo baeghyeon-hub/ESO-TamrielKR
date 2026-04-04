@@ -190,41 +190,34 @@ function Bridge:HookChatSend()
     return
   end
 
-  if not CHAT_SYSTEM then
-    self.chatSendRetryCount = (self.chatSendRetryCount or 0) + 1
-    if self.chatSendRetryCount <= 10 then
-      zo_callLater(function()
-        Bridge:HookChatSend()
-      end, 1000)
-    end
-    return
-  end
-
   self.chatSendHooked = true
 
-  -- 방법 1: CHAT_SYSTEM.OnTextEntryExecute 오버라이드
-  if CHAT_SYSTEM.OnTextEntryExecute then
-    local origExecute = CHAT_SYSTEM.OnTextEntryExecute
-    CHAT_SYSTEM.OnTextEntryExecute = function(chatSystem, text)
-      return origExecute(chatSystem, EncodeCNKR(text))
-    end
-    return
-  end
+  -- EsoKR과 동일한 방식: TextChanged 시점에 인코딩
+  -- SendChatMessage는 보호 함수라 애드온 코드가 call stack에 있으면 호출 불가
+  -- TextChanged에서 인코딩하면 Enter(Execute) 시점에는 call stack이 깨끗함
+  local encoding = false
+  ZO_PreHook("ZO_ChatTextEntry_TextChanged", function(control, newText)
+    if encoding then return end
+    local textEntry = control.system and control.system.textEntry
+    if not textEntry then return end
 
-  -- 방법 2: textEntry.GetText를 훅하여 전송 직전에 변환
-  if CHAT_SYSTEM.textEntry then
-    local textEntry = CHAT_SYSTEM.textEntry
-    local origGetText = textEntry.GetText
-    if origGetText then
-      textEntry.GetText = function(entry)
-        local text = origGetText(entry)
-        if text and text ~= "" then
-          return EncodeCNKR(text)
-        end
-        return text
-      end
+    local editCtrl = textEntry.editControl
+    if not editCtrl then return end
+
+    local cursorPos = editCtrl:GetCursorPosition()
+    if cursorPos == 0 then return end
+
+    local text = editCtrl:GetText()
+    if not text or text == "" then return end
+
+    local encoded = EncodeCNKR(text)
+    if encoded ~= text then
+      encoding = true
+      editCtrl:SetText(encoded)
+      editCtrl:SetCursorPosition(cursorPos)
+      encoding = false
     end
-  end
+  end)
 end
 
 -- ============================================================
@@ -356,7 +349,7 @@ local function OnAddonLoaded(_, addonName)
 end
 
 SLASH_COMMANDS["/tkbridge"] = function()
-  d("[TamrielKR_Bridge v1.0.4]")
+  d("[TamrielKR_Bridge v1.0.5]")
   d("  chatReceiveHooked: " .. tostring(Bridge.chatReceiveHooked))
   d("  chatSendHooked: " .. tostring(Bridge.chatSendHooked))
   d("  guildHooked: " .. tostring(Bridge.guildHooked))

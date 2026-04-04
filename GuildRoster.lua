@@ -122,14 +122,18 @@ end
 
 local function RefreshVisibleGuildRosterLevels()
   for globalName, value in pairs(_G) do
-    if type(value) == "userdata" and type(globalName) == "string" then
-      if globalName:match(GUILD_ROSTER_ROW_PATTERN) and value.GetNamedChild then
-        local level = value:GetNamedChild("Level")
-        if level then
-          FixGuildRosterLevelLabel(level)
+    if type(globalName) == "string" then
+      if globalName:match(GUILD_ROSTER_ROW_PATTERN) then
+        if type(value) == "userdata" and value.GetNamedChild then
+          local level = value:GetNamedChild("Level")
+          if level then
+            FixGuildRosterLevelLabel(level)
+          end
         end
       elseif globalName:match(GUILD_ROSTER_LEVEL_PATTERN) then
-        FixGuildRosterLevelLabel(value)
+        if type(value) == "userdata" then
+          FixGuildRosterLevelLabel(value)
+        end
       end
     end
   end
