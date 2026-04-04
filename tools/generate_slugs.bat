@@ -25,6 +25,7 @@ if not exist "%SLUGFONT%" (
 set "MARUBURI_SEMIBOLD=%KRFONTDIR%\마루 부리\MaruBuriOTF\MaruBuri-SemiBold.otf"
 set "MARUBURI_CNKR=%KRFONTDIR%\MaruBuri-CNKR.otf"
 set "JALNAN=%KRFONTDIR%\여기어때 잘난체\JalnanGothic.otf"
+set "JALNAN_CNKR=%KRFONTDIR%\JalnanGothic-CNKR.otf"
 
 if not exist "%MARUBURI_SEMIBOLD%" (
     echo Missing font: %MARUBURI_SEMIBOLD%
@@ -36,13 +37,22 @@ if not exist "%JALNAN%" (
     exit /b 1
 )
 
-:: Generate CNKR font if not exists (Korean glyphs at CJK codepoints for Bridge compatibility)
+:: Generate CNKR fonts if not exists (Korean glyphs at CJK codepoints for Bridge compatibility)
 if not exist "%MARUBURI_CNKR%" (
-    echo [TamrielKR] Generating CNKR font...
+    echo [TamrielKR] Generating MaruBuri CNKR font...
     python "%~dp0generate_cnkr_font.py" "%MARUBURI_SEMIBOLD%" "%MARUBURI_CNKR%"
     if errorlevel 1 (
         echo Failed to generate CNKR font. Using original MaruBuri.
         set "MARUBURI_CNKR=%MARUBURI_SEMIBOLD%"
+    )
+)
+
+if not exist "%JALNAN_CNKR%" (
+    echo [TamrielKR] Generating Jalnan CNKR font...
+    python "%~dp0generate_cnkr_font.py" "%JALNAN%" "%JALNAN_CNKR%"
+    if errorlevel 1 (
+        echo Failed to generate CNKR font. Using original Jalnan.
+        set "JALNAN_CNKR=%JALNAN%"
     )
 )
 
@@ -65,9 +75,9 @@ call :generate "%MARUBURI_CNKR%" "%OUTDIR%\kr_maruburi.slug"
 call :generate "%MARUBURI_CNKR%" "%OUTDIR%\kr_gothic.slug"
 call :generate "%MARUBURI_CNKR%" "%OUTDIR%\kr_gothic_bold.slug"
 
-:: Jalnan Gothic - title/emphasis
-call :generate "%JALNAN%" "%OUTDIR%\ftn87.slug"
-call :generate "%JALNAN%" "%OUTDIR%\kr_jalnan.slug"
+:: Jalnan Gothic CNKR - title/emphasis (CJK 코드포인트에 한글 글리프 포함)
+call :generate "%JALNAN_CNKR%" "%OUTDIR%\ftn87.slug"
+call :generate "%JALNAN_CNKR%" "%OUTDIR%\kr_jalnan.slug"
 
 echo.
 echo [TamrielKR] Done! Generated 11 slug fonts.
