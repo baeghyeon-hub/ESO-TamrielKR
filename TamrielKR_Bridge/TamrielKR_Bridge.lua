@@ -190,26 +190,13 @@ function Bridge:HookChatSend()
     return
   end
 
-  if not CHAT_ROUTER then
-    self.chatSendRetryCount = (self.chatSendRetryCount or 0) + 1
-    if self.chatSendRetryCount <= 10 then
-      zo_callLater(function()
-        Bridge:HookChatSend()
-      end, 1000)
-    end
-    return
-  end
-
   self.chatSendHooked = true
 
-  -- CHAT_ROUTER를 직접 훅 — 모든 채팅 전송이 여기를 통과
-  ZO_PreHook(CHAT_ROUTER, "SendChatMessage", function(router, text)
-    local encoded = EncodeCNKR(text)
-    if encoded ~= text then
-      router:SendChatMessage(encoded)
-      return true
-    end
-  end)
+  -- 글로벌 SendChatMessage 훅 — 모든 채팅 전송이 여기를 통과
+  local origSendChatMessage = SendChatMessage
+  SendChatMessage = function(text, channel, target, ...)
+    return origSendChatMessage(EncodeCNKR(text), channel, target, ...)
+  end
 end
 
 -- ============================================================
