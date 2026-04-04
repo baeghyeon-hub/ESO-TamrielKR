@@ -1,0 +1,2 @@
+-- Korean override placeholder for Destinations collectibles.
+-- The base English collectible data is loaded first and kept as-is for now.

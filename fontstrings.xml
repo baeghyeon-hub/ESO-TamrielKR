@@ -1,0 +1,9 @@
+<GuiXml>
+    <String name="TAMRIELKR_FUTURA_BOOK" value="TamrielKR/fonts/ftn47.slug" />
+    <String name="TAMRIELKR_FUTURA_MEDIUM" value="TamrielKR/fonts/ftn57.slug" />
+    <String name="TAMRIELKR_FUTURA_BOLD" value="TamrielKR/fonts/ftn87.slug" />
+    <String name="TAMRIELKR_PROSE_ANTIQUE" value="TamrielKR/fonts/proseantiquepsmt.slug" />
+    <String name="TAMRIELKR_UNIVERS_BOLD" value="TamrielKR/fonts/univers47.slug" />
+    <String name="TAMRIELKR_UNIVERS_MEDIUM" value="TamrielKR/fonts/univers55.slug" />
+    <String name="TAMRIELKR_UNIVERS_CONDENSED" value="TamrielKR/fonts/univers57.slug" />
+</GuiXml>

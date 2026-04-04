@@ -1,0 +1,21 @@
+# Build output
+dist/
+
+# Slug fonts (binary, regenerate with tools/generate_slugs.bat)
+fonts/*.slug
+
+# Game translation data (not ours to distribute)
+gamedata/
+
+# Font source files (OTF/TTF, large binaries)
+폰트/
+
+# Addon patch zips (build artifacts)
+Addon PATCHES/*.zip
+
+# Claude Code
+.claude/
+
+# OS junk
+.DS_Store
+Thumbs.db

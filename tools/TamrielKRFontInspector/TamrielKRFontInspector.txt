@@ -1,0 +1,8 @@
+## Title: TamrielKR Font Inspector
+## Description: Hover inspector for ESO UI controls and font styles
+## Version: 1.0.0
+## AddOnVersion: 1
+## Author: TamrielKR
+## APIVersion: 101045 101046
+
+TamrielKRFontInspector.lua
