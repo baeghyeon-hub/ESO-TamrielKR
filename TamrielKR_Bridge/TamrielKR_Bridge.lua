@@ -90,8 +90,8 @@ end
 
 -- CJK → 한글 (수신 디코딩: EsoKR → TamrielKR)
 local function MapCNKRToKR(codepoint)
-  if codepoint >= 0x4E00 and codepoint <= 0x4EFF then
-    return codepoint - 0x3D00
+  if codepoint >= 0x5E00 and codepoint <= 0x5EFF then
+    return codepoint - 0x4D00
   end
 
   if codepoint >= 0x5F01 and codepoint <= 0x5F5F then
@@ -108,7 +108,7 @@ end
 -- 한글 → CJK (송신 인코딩: TamrielKR → EsoKR)
 local function MapKRToCNKR(codepoint)
   if codepoint >= 0x1100 and codepoint <= 0x11FF then
-    return codepoint + 0x3D00
+    return codepoint + 0x4D00
   end
 
   if codepoint >= 0x3131 and codepoint <= 0x318F then
@@ -328,7 +328,7 @@ local function OnAddonLoaded(_, addonName)
 end
 
 SLASH_COMMANDS["/tkbridge"] = function()
-  d("[TamrielKR_Bridge v1.0.1]")
+  d("[TamrielKR_Bridge v1.0.2]")
   d("  chatReceiveHooked: " .. tostring(Bridge.chatReceiveHooked))
   d("  chatSendHooked: " .. tostring(Bridge.chatSendHooked))
   d("  guildHooked: " .. tostring(Bridge.guildHooked))

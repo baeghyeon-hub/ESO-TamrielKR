@@ -1,7 +1,7 @@
 ## Title: TamrielKR Bridge
 ## Description: EsoKR chat compatibility bridge for TamrielKR
-## Version: 1.0.1
-## AddOnVersion: 101
+## Version: 1.0.2
+## AddOnVersion: 102
 ## Author: TamrielKR
 ## APIVersion: 101045 101046
 ## DependsOn: TamrielKR>=100
