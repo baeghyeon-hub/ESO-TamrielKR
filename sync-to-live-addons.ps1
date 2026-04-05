@@ -12,7 +12,7 @@ if (-not (Test-Path $tamrielKRTarget)) {
 $tamrielKRFiles = @(
     "Core.lua", "Fonts.lua", "Skills.lua",
     "GuildRoster.lua", "UI.lua", "TamrielKR.lua",
-    "TamrielKR.txt", "TamrielKR.xml",
+    "TamrielKR.txt", "TamrielKR.xml", "Bindings.xml",
     "backupfont_kr.xml", "fontstrings.xml"
 )
 foreach ($file in $tamrielKRFiles) {

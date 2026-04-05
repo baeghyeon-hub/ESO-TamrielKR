@@ -32,3 +32,12 @@ end
 function TamrielKR:GetLanguage()
   return realGetCVar("language.2")
 end
+
+function TamrielKR:ToggleLanguage()
+  local current = self:GetLanguage()
+  if current == "kr" then
+    self:SetLanguage("en")
+  else
+    self:SetLanguage("kr")
+  end
+end

@@ -67,5 +67,7 @@ SLASH_COMMANDS["/tkqdump"] = function()
   end
 end
 
+ZO_CreateStringId("SI_BINDING_NAME_TAMRIELKR_TOGGLE_LANGUAGE", "한/영 전환")
+
 EVENT_MANAGER:RegisterForEvent(addon.name, EVENT_ADD_ON_LOADED, OnAddonLoaded)
 EVENT_MANAGER:RegisterForEvent(addon.name .. "_Activated", EVENT_PLAYER_ACTIVATED, OnPlayerActivated)
