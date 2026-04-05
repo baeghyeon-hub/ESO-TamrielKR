@@ -277,7 +277,10 @@ function Bridge:HookGuildUI()
     end
   end
 
-  local guildScenes = { "guildHome", "guildRoster", "guildRanks", "guildHistory", "guildHeraldry" }
+  local guildScenes = {
+    "guildHome", "guildRoster", "guildRanks", "guildHistory", "guildHeraldry",
+    "guildBrowserKeyboard", "guildBrowserGamepad", "guildBrowser",
+  }
   for _, sceneName in ipairs(guildScenes) do
     local scene = SCENE_MANAGER:GetScene(sceneName)
     if scene then
@@ -293,14 +296,55 @@ function Bridge:HookGuildUI()
       end)
     end
   end
+
+  -- 길드 브라우저 매니저 콜백 훅
+  if GUILD_BROWSER_MANAGER then
+    local guildBrowserCallbacks = {
+      "OnGuildDataReady", "OnGuildInfoReady", "OnGuildDataLoaded",
+    }
+    for _, callbackName in ipairs(guildBrowserCallbacks) do
+      pcall(function()
+        GUILD_BROWSER_MANAGER:RegisterCallback(callbackName, function()
+          zo_callLater(function()
+            Bridge:DecodeVisibleGuildTexts()
+          end, 50)
+          zo_callLater(function()
+            Bridge:DecodeVisibleGuildTexts()
+          end, 300)
+        end)
+      end)
+    end
+  end
+
+  -- 길드 파인더 관련 단일 반환 API 훅
+  local guildFinderApis = {
+    "GetGuildRecruitmentHeaderMessage",
+    "GetGuildRecruitmentRecruitmentMessage",
+  }
+  for _, funcName in ipairs(guildFinderApis) do
+    local original = _G[funcName]
+    if original then
+      _G[funcName] = function(...)
+        local result = original(...)
+        if type(result) == "string" and result ~= "" then
+          return DecodeCNKR(result)
+        end
+        return result
+      end
+    end
+  end
 end
 
 function Bridge:DecodeVisibleGuildTexts()
-  local containers = { "ZO_GuildHome", "ZO_GuildSharedInfo", "ZO_GuildRoster", "ZO_GuildRanks" }
+  local containers = {
+    "ZO_GuildHome", "ZO_GuildSharedInfo", "ZO_GuildRoster", "ZO_GuildRanks",
+    "ZO_GuildBrowser_GuildInfo_Keyboard", "ZO_GuildBrowser_GuildInfo_Gamepad",
+    "ZO_GuildBrowser_Keyboard", "ZO_GuildBrowser_Gamepad",
+  }
   for _, containerName in ipairs(containers) do
     local container = _G[containerName]
     if container then
-      Bridge:DecodeControlTree(container, 8)
+      Bridge:DecodeControlTree(container, 12)
     end
   end
 end
@@ -349,7 +393,7 @@ local function OnAddonLoaded(_, addonName)
 end
 
 SLASH_COMMANDS["/tkbridge"] = function()
-  d("[TamrielKR_Bridge v1.0.5]")
+  d("[TamrielKR_Bridge v1.0.6]")
   d("  chatReceiveHooked: " .. tostring(Bridge.chatReceiveHooked))
   d("  chatSendHooked: " .. tostring(Bridge.chatSendHooked))
   d("  guildHooked: " .. tostring(Bridge.guildHooked))

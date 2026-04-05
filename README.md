@@ -196,6 +196,46 @@ tools\generate_slugs.bat "C:\...\game\client\slugfont.exe"
 
 ---
 
+## macOS 지원
+
+macOS ESO에서는 Windows와 다른 두 가지 문제가 있습니다:
+
+1. **slug 폰트가 로드되지 않음** — macOS ESO 클라이언트는 `.slug` 포맷을 인식하지 못해 한글이 □로 표시됩니다.
+2. **시스템 한글 IME가 차단됨** — macOS의 한글 입력기가 ESO 엔진에 도달하지 않아 한글 타이핑이 불가능합니다.
+
+### macOS 호환 패치 설치
+
+**[macOS 호환 패치 다운로드 (TamrielKR_Mac-v1.0.0)](https://github.com/baeghyeon-hub/ESO-TamrielKR/releases/tag/mac-v1.0.0)**
+
+기본 TamrielKR 패치를 먼저 설치한 후, 아래 파일을 덮어쓰거나 추가합니다:
+
+| 파일 | 설치 위치 | 설명 |
+|---|---|---|
+| `backupfont_kr.xml` | `AddOns/TamrielKR/backupfont_kr.xml` (덮어쓰기) | slug → OTF 직접 참조로 변경 |
+| `MaruBuri-CNKR.otf` | `AddOns/TamrielKR/fonts/` | 한글 본문 폰트 (OTF) |
+| `JalnanGothic-CNKR.otf` | `AddOns/TamrielKR/fonts/` | 한글 볼드 폰트 (OTF) |
+| `TamrielKR_IME/` | `AddOns/TamrielKR_IME/` (폴더 통째로) | 한글 입력 애드온 |
+
+### macOS 한글 입력 방법
+
+macOS에서는 시스템 IME 대신 `TamrielKR_IME` 애드온이 한글 입력을 처리합니다:
+
+1. macOS 시스템 입력기를 **영문(ABC)**으로 설정
+2. 게임 내 채팅창에서 `/tkime` 입력 또는 키바인딩으로 IME 토글
+3. 영문 키보드 그대로 두벌식 한글 입력 (r=ㄱ, k=ㅏ, ...)
+
+| 명령어 | 설명 |
+|---|---|
+| `/tkime` | 한글 입력 토글 (on/off) |
+| `/tkime on` | 한글 입력 켜기 |
+| `/tkime off` | 한글 입력 끄기 |
+| `/tkime debug` | 디버그 모드 토글 |
+| `/tkime test` | 조합 테스트 실행 |
+
+> 기술 상세 및 트러블슈팅은 [docs/mac-compatibility.md](docs/mac-compatibility.md) 참조
+
+---
+
 ## 변경 이력
 
 ### v1.0.3

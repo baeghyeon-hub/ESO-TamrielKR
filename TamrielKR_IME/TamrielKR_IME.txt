@@ -1,0 +1,12 @@
+## Title: TamrielKR IME
+## Description: Korean Input Method Editor for macOS ESO (Dubeolsik 2-set layout)
+## Version: 1.0.0
+## AddOnVersion: 100
+## Author: TamrielKR
+## APIVersion: 101044 101045
+## OptionalDependsOn: TamrielKR_Bridge
+
+KeyMap.lua
+KoreanComposer.lua
+TamrielKR_IME.lua
+Bindings.xml
