@@ -10,7 +10,7 @@ if (-not (Test-Path $tamrielKRTarget)) {
 }
 
 $tamrielKRFiles = @(
-    "Core.lua", "Fonts.lua", "Achievements.lua", "Skills.lua",
+    "Core.lua", "Fonts.lua", "Skills.lua",
     "GuildRoster.lua", "UI.lua", "TamrielKR.lua",
     "TamrielKR.txt", "TamrielKR.xml",
     "backupfont_kr.xml", "fontstrings.xml"

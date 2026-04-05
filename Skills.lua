@@ -11,6 +11,10 @@ local SKILL_INFO_RANK_MIN_SIZE = 46
 local SKILL_INFO_RANK_MAX_SIZE = 54
 local SKILL_INFO_RANK_SIZE_RATIO = 0.92
 
+-- Subclassing panel skill line list rank labels
+local SUBCLASS_RANK_HEIGHT = 67
+local SUBCLASS_RANK_FONT_SIZE = 40
+
 local function ResolveFontParts(fontString, fallbackFont, fallbackSize)
   if not fontString or fontString == "" then
     return fallbackFont, fallbackSize, nil
@@ -112,6 +116,45 @@ local function FixSkillInfoTitleLabel()
   return true
 end
 
+local function FixSubclassRankLabel(rank)
+  if not rank or not rank.GetText or not rank.SetFont or not rank.GetFont then
+    return
+  end
+
+  local text = rank:GetText()
+  if not text or text == "" or not text:match("^%d+$") then
+    return
+  end
+
+  if rank.SetHeight then
+    rank:SetHeight(SUBCLASS_RANK_HEIGHT)
+  end
+  if rank.SetDimensionConstraints then
+    rank:SetDimensionConstraints(0, 0, 0, SUBCLASS_RANK_HEIGHT)
+  end
+
+  local fontFile, _, effect = ResolveFontParts(rank:GetFont(), SKILL_INFO_RANK_FALLBACK_FONT, SUBCLASS_RANK_FONT_SIZE)
+  local newFont = string.format("%s|%d", fontFile, SUBCLASS_RANK_FONT_SIZE)
+  if effect and effect ~= "" then
+    newFont = newFont .. "|" .. effect
+  end
+
+  rank:SetFont(newFont)
+  rank:SetText(text)
+end
+
+local function RefreshSubclassRankLabels()
+  for list = 1, 5 do
+    for row = 1, 30 do
+      local rankName = string.format("ZO_SkillsSubclassingPanelClassSkillLineList%dRow%dRank", list, row)
+      local rank = rawget(_G, rankName)
+      if rank then
+        FixSubclassRankLabel(rank)
+      end
+    end
+  end
+end
+
 local function RefreshSkillInfoHeader()
   if addon:GetLanguage() ~= "kr" then
     return
@@ -119,6 +162,7 @@ local function RefreshSkillInfoHeader()
 
   FixSkillInfoRankLabel()
   FixSkillInfoTitleLabel()
+  RefreshSubclassRankLabels()
 end
 
 local function StartSkillsRefresh()

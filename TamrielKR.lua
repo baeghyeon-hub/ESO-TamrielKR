@@ -4,9 +4,6 @@ local function OnPlayerActivated()
   addon:ApplyFonts()
   addon:HookSkillsUI()
   addon:HookGuildRosterUI()
-  zo_callLater(function()
-    addon:HookAchievementUI()
-  end, 1000)
 end
 
 local function OnAddonLoaded(_, addonName)
