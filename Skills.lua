@@ -5,13 +5,8 @@ local SKILL_INFO_TITLE_NAME = "ZO_SkillsSkillInfoName"
 local SKILL_INFO_UPDATE_NAME = "TamrielKR_SkillsRefresh"
 
 local SKILL_INFO_RANK_FALLBACK_FONT = "TamrielKR/fonts/univers47.slug"
-local SKILL_INFO_RANK_WIDTH = 84
-local SKILL_INFO_RANK_HEIGHT = 72
-local SKILL_INFO_RANK_MIN_SIZE = 46
-local SKILL_INFO_RANK_MAX_SIZE = 54
-local SKILL_INFO_RANK_SIZE_RATIO = 0.92
 
--- Subclassing panel skill line list rank labels
+-- 서브클래싱 패널 랭크 라벨 (Univers67 원본 기준)
 local SUBCLASS_RANK_HEIGHT = 67
 local SUBCLASS_RANK_FONT_SIZE = 40
 
@@ -69,27 +64,17 @@ local function FixSkillInfoRankLabel()
     return false
   end
 
-  if rank.SetWidth then
-    rank:SetWidth(SKILL_INFO_RANK_WIDTH)
-  end
-  if rank.SetHeight then
-    rank:SetHeight(SKILL_INFO_RANK_HEIGHT)
-  end
   if rank.SetDimensions then
-    rank:SetDimensions(SKILL_INFO_RANK_WIDTH, SKILL_INFO_RANK_HEIGHT)
+    rank:SetDimensions(84, SUBCLASS_RANK_HEIGHT)
   end
   if rank.SetDimensionConstraints then
-    rank:SetDimensionConstraints(SKILL_INFO_RANK_WIDTH, SKILL_INFO_RANK_HEIGHT, SKILL_INFO_RANK_WIDTH, SKILL_INFO_RANK_HEIGHT)
+    rank:SetDimensionConstraints(84, SUBCLASS_RANK_HEIGHT, 84, SUBCLASS_RANK_HEIGHT)
   end
 
   ConfigureSingleLineLabel(rank, TEXT_ALIGN_CENTER, TEXT_ALIGN_CENTER)
 
-  local fontFile, baseSize, effect = ResolveFontParts(rank:GetFont(), SKILL_INFO_RANK_FALLBACK_FONT, SKILL_INFO_RANK_MAX_SIZE)
-  local newSize = tonumber(baseSize) or SKILL_INFO_RANK_MAX_SIZE
-  newSize = math.floor(newSize * SKILL_INFO_RANK_SIZE_RATIO)
-  newSize = zo_clamp(newSize, SKILL_INFO_RANK_MIN_SIZE, SKILL_INFO_RANK_MAX_SIZE)
-
-  local newFont = string.format("%s|%d", fontFile, newSize)
+  local fontFile, _, effect = ResolveFontParts(rank:GetFont(), SKILL_INFO_RANK_FALLBACK_FONT, SUBCLASS_RANK_FONT_SIZE)
+  local newFont = string.format("%s|%d", fontFile, SUBCLASS_RANK_FONT_SIZE)
   if effect and effect ~= "" then
     newFont = newFont .. "|" .. effect
   end
@@ -106,13 +91,6 @@ local function FixSkillInfoTitleLabel()
   end
 
   ConfigureSingleLineLabel(title, TEXT_ALIGN_LEFT, TEXT_ALIGN_CENTER)
-  if title.SetWidth then
-    local currentWidth = title:GetWidth()
-    if currentWidth and currentWidth > 0 and currentWidth < 220 then
-      title:SetWidth(220)
-    end
-  end
-
   return true
 end
 
@@ -143,6 +121,30 @@ local function FixSubclassRankLabel(rank)
   rank:SetText(text)
 end
 
+local function FixSubclassSkillInfoRank()
+  local rank = rawget(_G, "ZO_SkillsSubclassingPanelSkillsListContainerSkillInfoRank")
+  if rank and rank.GetText and rank.SetFont and rank.GetFont then
+    local text = rank:GetText()
+    if text and text ~= "" and text:match("^%d+$") then
+      if rank.SetHeight then
+        rank:SetHeight(SUBCLASS_RANK_HEIGHT)
+      end
+      if rank.SetDimensionConstraints then
+        rank:SetDimensionConstraints(0, 0, 0, SUBCLASS_RANK_HEIGHT)
+      end
+
+      local fontFile, _, effect = ResolveFontParts(rank:GetFont(), SKILL_INFO_RANK_FALLBACK_FONT, SUBCLASS_RANK_FONT_SIZE)
+      local newFont = string.format("%s|%d", fontFile, SUBCLASS_RANK_FONT_SIZE)
+      if effect and effect ~= "" then
+        newFont = newFont .. "|" .. effect
+      end
+
+      rank:SetFont(newFont)
+      rank:SetText(text)
+    end
+  end
+end
+
 local function RefreshSubclassRankLabels()
   for list = 1, 5 do
     for row = 1, 30 do
@@ -163,6 +165,7 @@ local function RefreshSkillInfoHeader()
   FixSkillInfoRankLabel()
   FixSkillInfoTitleLabel()
   RefreshSubclassRankLabels()
+  FixSubclassSkillInfoRank()
 end
 
 local function StartSkillsRefresh()
