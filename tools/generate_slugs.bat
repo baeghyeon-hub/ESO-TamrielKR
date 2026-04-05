@@ -9,7 +9,7 @@ setlocal EnableDelayedExpansion
 
 set "SLUGFONT=%~1"
 set "OUTDIR=%~dp0..\fonts"
-set "KRFONTDIR=%~dp0..\..\폰트"
+set "KRFONTDIR=%~dp0..\폰트"
 set "DEFAULT_SLUGFONT=C:\Program Files (x86)\Steam\steamapps\common\Zenimax Online\The Elder Scrolls Online\game\client\slugfont.exe"
 
 if "%SLUGFONT%"=="" (
@@ -22,7 +22,7 @@ if not exist "%SLUGFONT%" (
     exit /b 1
 )
 
-set "MARUBURI_SEMIBOLD=%KRFONTDIR%\마루 부리\MaruBuriOTF\MaruBuri-SemiBold.otf"
+set "MARUBURI_SEMIBOLD=%KRFONTDIR%\마루 부리\MaruBuriOTF\MaruBuri-Bold.otf"
 set "MARUBURI_CNKR=%KRFONTDIR%\MaruBuri-CNKR.otf"
 set "JALNAN=%KRFONTDIR%\여기어때 잘난체\JalnanGothic.otf"
 set "JALNAN_CNKR=%KRFONTDIR%\JalnanGothic-CNKR.otf"
@@ -57,7 +57,7 @@ if not exist "%JALNAN_CNKR%" (
 )
 
 echo [TamrielKR] Generating slug fonts
-echo [TamrielKR] Base font: MaruBuri SemiBold (CNKR)
+echo [TamrielKR] Base font: MaruBuri Bold (CNKR)
 echo [TamrielKR] Title font: Jalnan Gothic
 echo [TamrielKR] Output directory: %OUTDIR%
 echo.

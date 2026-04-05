@@ -17,7 +17,6 @@ fontstrings.xml
 backupfont_$(language).xml
 Core.lua
 Fonts.lua
-Achievements.lua
 Skills.lua
 GuildRoster.lua
 UI.lua
