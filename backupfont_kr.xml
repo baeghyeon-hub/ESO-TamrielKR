@@ -10,32 +10,33 @@
     <BackupFont originalFont="TamrielKR/fonts/univers57.slug" backupFont="$(UNIVERS57_FONT)"/>
 
     <!-- 한글 slug → ESO 원본 폰트 fallback (확장 라틴 글리프 보완) -->
-    <BackupFont originalFont="TamrielKR/fonts/kr_maruburi.slug" backupFont="$(FTN87_FONT)"/>
-    <BackupFont originalFont="TamrielKR/fonts/kr_jalnan.slug" backupFont="$(PROSE_ANTIQUE_FONT)"/>
+    <BackupFont originalFont="TamrielKR/fonts/kr_maruburi_cnkr.slug" backupFont="$(FTN87_FONT)"/>
+    <BackupFont originalFont="TamrielKR/fonts/kr_maruburi.slug" backupFont="TamrielKR/fonts/kr_maruburi_cnkr.slug"/>
+    <BackupFont originalFont="TamrielKR/fonts/kr_jalnan.slug" backupFont="TamrielKR/fonts/kr_maruburi_cnkr.slug"/>
 
-    <BackupFont originalFont="$(FTN47_FONT)" backupFont="TamrielKR/fonts/kr_maruburi.slug"/>
-    <BackupFont originalFont="$(TRAJAN_PRO_R_FONT)" backupFont="TamrielKR/fonts/kr_maruburi.slug"/>
-    <BackupFont originalFont="$(GAMEPAD_LIGHT_FONT)" backupFont="TamrielKR/fonts/kr_maruburi.slug"/>
+    <BackupFont originalFont="$(FTN47_FONT)" backupFont="TamrielKR/fonts/kr_maruburi_cnkr.slug"/>
+    <BackupFont originalFont="$(TRAJAN_PRO_R_FONT)" backupFont="TamrielKR/fonts/kr_maruburi_cnkr.slug"/>
+    <BackupFont originalFont="$(GAMEPAD_LIGHT_FONT)" backupFont="TamrielKR/fonts/kr_maruburi_cnkr.slug"/>
 
-    <BackupFont originalFont="$(FTN57_FONT)" backupFont="TamrielKR/fonts/kr_maruburi.slug"/>
-    <BackupFont originalFont="$(GAMEPAD_MEDIUM_FONT)" backupFont="TamrielKR/fonts/kr_maruburi.slug"/>
+    <BackupFont originalFont="$(FTN57_FONT)" backupFont="TamrielKR/fonts/kr_maruburi_cnkr.slug"/>
+    <BackupFont originalFont="$(GAMEPAD_MEDIUM_FONT)" backupFont="TamrielKR/fonts/kr_maruburi_cnkr.slug"/>
 
-    <BackupFont originalFont="$(FTN87_FONT)" backupFont="TamrielKR/fonts/kr_jalnan.slug"/>
-    <BackupFont originalFont="$(HANDWRITTEN_BOLD_FONT)" backupFont="TamrielKR/fonts/kr_jalnan.slug"/>
-    <BackupFont originalFont="$(GAMEPAD_BOLD_FONT)" backupFont="TamrielKR/fonts/kr_jalnan.slug"/>
+    <BackupFont originalFont="$(FTN87_FONT)" backupFont="TamrielKR/fonts/kr_maruburi_cnkr.slug"/>
+    <BackupFont originalFont="$(HANDWRITTEN_BOLD_FONT)" backupFont="TamrielKR/fonts/kr_maruburi_cnkr.slug"/>
+    <BackupFont originalFont="$(GAMEPAD_BOLD_FONT)" backupFont="TamrielKR/fonts/kr_maruburi_cnkr.slug"/>
 
-    <BackupFont originalFont="$(PROSE_ANTIQUE_FONT)" backupFont="TamrielKR/fonts/kr_maruburi.slug"/>
-    <BackupFont originalFont="$(ANTIQUE_FONT)" backupFont="TamrielKR/fonts/kr_maruburi.slug"/>
+    <BackupFont originalFont="$(PROSE_ANTIQUE_FONT)" backupFont="TamrielKR/fonts/kr_maruburi_cnkr.slug"/>
+    <BackupFont originalFont="$(ANTIQUE_FONT)" backupFont="TamrielKR/fonts/kr_maruburi_cnkr.slug"/>
 
-    <BackupFont originalFont="$(BOLD_FONT)" backupFont="TamrielKR/fonts/kr_maruburi.slug"/>
-    <BackupFont originalFont="$(HANDWRITTEN_FONT)" backupFont="TamrielKR/fonts/kr_maruburi.slug"/>
-    <BackupFont originalFont="$(UNIVERS67_FONT)" backupFont="TamrielKR/fonts/kr_maruburi.slug"/>
+    <BackupFont originalFont="$(BOLD_FONT)" backupFont="TamrielKR/fonts/kr_maruburi_cnkr.slug"/>
+    <BackupFont originalFont="$(HANDWRITTEN_FONT)" backupFont="TamrielKR/fonts/kr_maruburi_cnkr.slug"/>
+    <BackupFont originalFont="$(UNIVERS67_FONT)" backupFont="TamrielKR/fonts/kr_maruburi_cnkr.slug"/>
 
-    <BackupFont originalFont="$(UNIVERS55_FONT)" backupFont="TamrielKR/fonts/kr_maruburi.slug"/>
-    <BackupFont originalFont="$(STONE_TABLET_FONT)" backupFont="TamrielKR/fonts/kr_maruburi.slug"/>
-    <BackupFont originalFont="$(CONSOLAS_FONT)" backupFont="TamrielKR/fonts/kr_maruburi.slug"/>
+    <BackupFont originalFont="$(UNIVERS55_FONT)" backupFont="TamrielKR/fonts/kr_maruburi_cnkr.slug"/>
+    <BackupFont originalFont="$(STONE_TABLET_FONT)" backupFont="TamrielKR/fonts/kr_maruburi_cnkr.slug"/>
+    <BackupFont originalFont="$(CONSOLAS_FONT)" backupFont="TamrielKR/fonts/kr_maruburi_cnkr.slug"/>
 
-    <BackupFont originalFont="$(CHAT_FONT)" backupFont="TamrielKR/fonts/kr_maruburi.slug"/>
-    <BackupFont originalFont="$(MEDIUM_FONT)" backupFont="TamrielKR/fonts/kr_maruburi.slug"/>
-    <BackupFont originalFont="$(UNIVERS57_FONT)" backupFont="TamrielKR/fonts/kr_maruburi.slug"/>
+    <BackupFont originalFont="$(CHAT_FONT)" backupFont="TamrielKR/fonts/kr_maruburi_cnkr.slug"/>
+    <BackupFont originalFont="$(MEDIUM_FONT)" backupFont="TamrielKR/fonts/kr_maruburi_cnkr.slug"/>
+    <BackupFont originalFont="$(UNIVERS57_FONT)" backupFont="TamrielKR/fonts/kr_maruburi_cnkr.slug"/>
 </GuiXml>
