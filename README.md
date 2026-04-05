@@ -174,23 +174,23 @@ tools\generate_slugs.bat "C:\...\game\client\slugfont.exe"
 
 ## 서드파티 애드온 한글 패치
 
-`Addon PATCHES/` 폴더에 개별 애드온 한글 패치가 포함되어 있습니다. 필요한 패치를 받아 기존 애드온 폴더에 덮어 쓰세요.
+**[서드파티 한글패치 다운로드](https://github.com/baeghyeon-hub/ESO-TamrielKR/releases/tag/addon-patches-v1.0.0)** — 필요한 애드온만 골라서 다운로드 후 `AddOns\` 폴더에 덮어쓰세요.
 
 | 애드온 | 설명 |
 |---|---|
-| ActionDurationReminder | 버프/디버프 지속시간 알림 |
-| Azurah | UI 커스터마이징 |
-| BanditsUserInterface | 올인원 UI 개선 |
-| Destinations | 목적지/여행 가이드 |
-| FancyActionBar+ | 액션바 강화 |
-| HarvestMap | 채집 위치 지도 |
-| LibAddonMenu-2.0 | 애드온 설정 메뉴 라이브러리 |
-| LibSavedVars | 저장 변수 라이브러리 |
-| LostTreasure | 보물 지도 위치 |
-| pChat | 채팅 기능 강화 |
-| TamrielTradeCentre (TTC) | 거래소 가격 검색 |
-| USPF | 스킬/CP 세팅 공유 |
-| VotansMiniMap | 미니맵 |
+| [ActionDurationReminder](https://github.com/baeghyeon-hub/ESO-TamrielKR/releases/download/addon-patches-v1.0.0/ActionDurationReminder-KR-Minion.zip) | 버프/디버프 지속시간 알림 |
+| [Azurah](https://github.com/baeghyeon-hub/ESO-TamrielKR/releases/download/addon-patches-v1.0.0/Azurah-KR-Minion.zip) | UI 커스터마이징 |
+| [BanditsUserInterface](https://github.com/baeghyeon-hub/ESO-TamrielKR/releases/download/addon-patches-v1.0.0/BanditsUserInterface-KR-Minion.zip) | 올인원 UI 개선 |
+| [Destinations](https://github.com/baeghyeon-hub/ESO-TamrielKR/releases/download/addon-patches-v1.0.0/Destinations-KR-Minion.zip) | 목적지/여행 가이드 |
+| [FancyActionBar+](https://github.com/baeghyeon-hub/ESO-TamrielKR/releases/download/addon-patches-v1.0.0/FancyActionBarPlus-KR-Minion.zip) | 액션바 강화 |
+| [HarvestMap](https://github.com/baeghyeon-hub/ESO-TamrielKR/releases/download/addon-patches-v1.0.0/HarvestMap-KR-Minion.zip) | 채집 위치 지도 |
+| [LibAddonMenu-2.0](https://github.com/baeghyeon-hub/ESO-TamrielKR/releases/download/addon-patches-v1.0.0/LibAddonMenu-2.0-KR-Minion.zip) | 애드온 설정 메뉴 라이브러리 |
+| [LibSavedVars](https://github.com/baeghyeon-hub/ESO-TamrielKR/releases/download/addon-patches-v1.0.0/LibSavedVars-KR-Minion.zip) | 저장 변수 라이브러리 |
+| [LostTreasure](https://github.com/baeghyeon-hub/ESO-TamrielKR/releases/download/addon-patches-v1.0.0/LostTreasure-KR-Minion.zip) | 보물 지도 위치 |
+| [pChat](https://github.com/baeghyeon-hub/ESO-TamrielKR/releases/download/addon-patches-v1.0.0/pChat-KR-Minion.zip) | 채팅 기능 강화 |
+| [TamrielTradeCentre (TTC)](https://github.com/baeghyeon-hub/ESO-TamrielKR/releases/download/addon-patches-v1.0.0/TamrielTradeCentre-KR-Minion.zip) | 거래소 가격 검색 |
+| [USPF](https://github.com/baeghyeon-hub/ESO-TamrielKR/releases/download/addon-patches-v1.0.0/USPF-KR-Minion.zip) | 스킬/CP 세팅 공유 |
+| [VotansMiniMap](https://github.com/baeghyeon-hub/ESO-TamrielKR/releases/download/addon-patches-v1.0.0/VotansMiniMap-KR-Minion.zip) | 미니맵 |
 
 ---
 
