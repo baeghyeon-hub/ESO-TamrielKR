@@ -125,6 +125,8 @@ C:\Users\<사용자>\Documents\Elder Scrolls Online\live\AddOns\
 
 3. **게임 번역 데이터** (`gamedata/lang/kr.lang`)는 본 패치에 포함되어 있지 않습니다.
 
+   > `kr.lang`은 기존 EsoKR 번역팀이 오랫동안 작업해온 번역 데이터이며, ESO 업데이트 주기마다 새로 갱신되고 있습니다. TamrielKR은 폰트/UI 패치만 담당하며, 번역 데이터는 **EsoKR 팀이 배포하는 kr.lang 파일을 직접 받아서 사용**해야 합니다.
+   >
    > TamrielKR은 **CNKR(CJK 인코딩) 방식의 kr.lang과 UTF-8 방식의 kr.lang 모두 호환**됩니다.
    > 모든 slug 폰트에 CNKR 매핑이 포함되어 있어, 기존 EsoKR용 kr.lang을 변환 없이 그대로 사용할 수 있습니다.
 
