@@ -108,7 +108,7 @@ TamrielKR_Bridge 애드온이 EsoKR(CJK 인코딩)과 TamrielKR(네이티브 한
 
 ## 설치 방법
 
-1. **[최신 릴리즈 다운로드 (TamrielKR-release.zip)](https://github.com/baeghyeon-hub/ESO-TamrielKR/releases/latest/download/TamrielKR-release.zip)**
+1. **[최신 릴리즈 다운로드 (TamrielKR-release.zip)](https://github.com/baeghyeon-hub/ESO-TamrielKR/releases/download/v1.0.4/TamrielKR-release.zip)**
 2. 압축 해제 후 3개 폴더를 ESO 애드온 폴더에 복사:
 
 ```
