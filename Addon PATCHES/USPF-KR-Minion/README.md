@@ -1,21 +1,22 @@
-# USPF Korean Patch
+# USPF - Korean Patch
 
-덮어쓰기용 한국어 패치입니다.
+이 패키지는 현재 독립 `-KR` 애드온으로는 안전하지 않아 원본 폴더에 덮어써야 하는 한국어 패치입니다.
 
-## 대상 애드온
-- `USPF` (Urich's Skill Point Finder)
+## 설치 방법
+
+1. 원본 애드온 `USPF`를 먼저 설치합니다.
+2. 게임을 종료합니다.
+3. 압축 안의 `USPF` 폴더 내용을 `AddOns` 안의 원본 `USPF` 폴더에 덮어씁니다.
+4. 원본 애드온만 켜고, 별도 `-KR` 애드온처럼 설치하지 않습니다.
 
 ## 포함 파일
-- `USPF/lang/kr.lua`
+
 - `USPF/lang/strings.lua`
-- `USPF/USPF.lua`
+- `USPF/lang/kr.lua`
 - `USPF/USPF_Menu.lua`
+- `USPF/USPF.lua`
 
-## 적용 방법
-1. `USPF` 원본 애드온이 설치되어 있어야 합니다.
-2. 이 패치의 `USPF` 폴더를 ESO `live/AddOns` 경로에 그대로 덮어씁니다.
-3. 게임에서 `/reloadui`를 실행합니다.
+## 비고
 
-## 메모
-- `USPF.txt`가 `lang/$(language).lua`를 로드하므로 `kr.lua`를 추가하면 한국어 문자열이 붙습니다.
-- 이번 패치는 정렬 드롭다운 선택지, 설정창 제목, 캐릭터 선택 툴팁, 키바인드 이름 같은 하드코딩 영문도 함께 한국어화합니다.
+- 이 패치는 원본 핵심 파일 일부를 직접 교체합니다.
+- Minion 독립 패치 애드온으로 분리하면 초기화 순서나 전역 상태 재생성 때문에 문제가 날 수 있습니다.

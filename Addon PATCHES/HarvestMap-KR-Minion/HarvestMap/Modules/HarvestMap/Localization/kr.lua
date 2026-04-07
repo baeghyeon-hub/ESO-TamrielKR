@@ -1,3 +1,17 @@
+local function TamrielKR_IsKoreanClient()
+	if TamrielKR and TamrielKR.GetLanguage then
+		local ok, lang = pcall(TamrielKR.GetLanguage, TamrielKR)
+		if ok and lang == "kr" then
+			return true
+		end
+	end
+	return GetCVar("language.2") == "kr"
+end
+
+if not TamrielKR_IsKoreanClient() then
+	return
+end
+
 Harvest.localizedStrings = {
 	-- top level description
 	esouidescription = "애드온 설명과 FAQ는 esoui.com의 애드온 페이지를 참고하세요.",

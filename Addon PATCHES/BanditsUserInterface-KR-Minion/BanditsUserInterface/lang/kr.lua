@@ -1,3 +1,17 @@
+local function TamrielKR_IsKoreanClient()
+	if TamrielKR and TamrielKR.GetLanguage then
+		local ok, lang = pcall(TamrielKR.GetLanguage, TamrielKR)
+		if ok and lang == "kr" then
+			return true
+		end
+	end
+	return GetCVar("language.2") == "kr"
+end
+
+if not TamrielKR_IsKoreanClient() then
+	return
+end
+
 --KOREAN LANGUAGE LOCALIZATION
 local on,off="켜기","끄기"
 local lmb,rmb,mmb='|t16:16:/BanditsUserInterface/textures/lmb.dds|t','|t16:16:/BanditsUserInterface/textures/rmb.dds|t','|t16:16:/BanditsUserInterface/textures/mmb.dds|t'

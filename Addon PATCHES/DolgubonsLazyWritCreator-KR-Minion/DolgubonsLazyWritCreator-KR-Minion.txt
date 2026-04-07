@@ -1,0 +1,10 @@
+## Title: DolgubonsLazyWritCreator - Korean Patch
+## Description: Standalone Korean patch for DolgubonsLazyWritCreator.
+## Version: 1.0.0
+## AddOnVersion: 10000
+## Author: TamrielKR
+## APIVersion: 101049
+## DependsOn: DolgubonsLazyWritCreator
+## OptionalDependsOn: TamrielKR
+
+DolgubonsLazyWritCreator/Languages/kr.lua

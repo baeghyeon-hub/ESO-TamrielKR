@@ -1,3 +1,17 @@
+local function TamrielKR_IsKoreanClient()
+	if TamrielKR and TamrielKR.GetLanguage then
+		local ok, lang = pcall(TamrielKR.GetLanguage, TamrielKR)
+		if ok and lang == "kr" then
+			return true
+		end
+	end
+	return GetCVar("language.2") == "kr"
+end
+
+if not TamrielKR_IsKoreanClient() then
+	return
+end
+
 ZO_CreateStringId("SI_KEYBINDINGS_CATEGORY_VOTANS_MINIMAP", "Mini Map")
 ZO_CreateStringId("SI_BINDING_NAME_VOTANS_TOGGLE_MAP_SHOW", "Toggle Show Map")
 ZO_CreateStringId("SI_BINDING_NAME_VOTANS_TOGGLE_MAP_SHOW_HUD", "Toggle Show HUD")

@@ -1,16 +1,19 @@
-# LibSavedVars KR Minion Patch
+# LibSavedVars - Korean Patch
 
-이 패키지는 `LibSavedVars` 원본 폴더에 덮어쓰는 한국어 패치입니다.
+이 패키지는 Minion/ESOUI 배포를 위한 독립 한국어 패치 애드온입니다.
+
+## 설치 방법
+
+1. 원본 애드온 `LibSavedVars`를 먼저 설치합니다.
+2. 이 패키지를 `AddOns` 폴더에 별도 폴더로 풀어 설치합니다.
+3. TamrielKR 환경에서는 한국어일 때만 자동 적용됩니다.
 
 ## 포함 파일
 
 - `LibSavedVars/localization/kr.lua`
 
-## 설치 방식
+## 비고
 
-압축본 또는 이 폴더 안의 `LibSavedVars` 폴더를 원본 라이브러리 폴더 위에 그대로 덮어쓰면 됩니다.
-
-## 메모
-
-- 원본 매니페스트의 `localization/$(language).lua` 구조를 그대로 사용합니다.
-- 현재 패치는 `Account-wide Settings` 공용 문자열만 한국어로 덮습니다.
+- `## DependsOn: LibSavedVars` 기반으로 원본 애드온 다음에 로드됩니다.
+- 패치 파일은 비한글 환경에서 즉시 종료되도록 가드가 들어 있습니다.
+- 원본 폴더에 직접 덮어쓰지 않는 Minion 친화적 구조입니다.

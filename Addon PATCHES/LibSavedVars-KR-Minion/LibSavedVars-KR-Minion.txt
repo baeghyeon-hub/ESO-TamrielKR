@@ -1,0 +1,10 @@
+## Title: LibSavedVars - Korean Patch
+## Description: Standalone Korean patch for LibSavedVars.
+## Version: 1.0.0
+## AddOnVersion: 10000
+## Author: TamrielKR
+## APIVersion: 101049
+## DependsOn: LibSavedVars
+## OptionalDependsOn: TamrielKR
+
+LibSavedVars/localization/kr.lua

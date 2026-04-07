@@ -34,6 +34,16 @@ PATCHES = {
             "ActionDurationReminder/i18n/kr.lua",
         ],
     },
+    "CrutchAlerts-KR-Minion": {
+        "title": "CrutchAlerts - Korean Patch",
+        "description": "Standalone Korean patch for CrutchAlerts.",
+        "depends_on": "CrutchAlerts",
+        "api_version": "101049",
+        "install_mode": "standalone",
+        "files": [
+            "CrutchAlerts/lang/kr.lua",
+        ],
+    },
     "Azurah-KR-Minion": {
         "title": "Azurah - Korean Patch",
         "description": "Standalone Korean patch for Azurah.",

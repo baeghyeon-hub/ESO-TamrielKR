@@ -1,3 +1,17 @@
+local function TamrielKR_IsKoreanClient()
+	if TamrielKR and TamrielKR.GetLanguage then
+		local ok, lang = pcall(TamrielKR.GetLanguage, TamrielKR)
+		if ok and lang == "kr" then
+			return true
+		end
+	end
+	return GetCVar("language.2") == "kr"
+end
+
+if not TamrielKR_IsKoreanClient() then
+	return
+end
+
 SafeAddString(SI_KEYBINDINGS_CATEGORY_VOTANS_MINIMAP, "미니맵")
 SafeAddString(SI_BINDING_NAME_VOTANS_TOGGLE_MAP_SHOW, "지도 표시 전환")
 SafeAddString(SI_BINDING_NAME_VOTANS_TOGGLE_MAP_SHOW_HUD, "HUD 표시 전환")

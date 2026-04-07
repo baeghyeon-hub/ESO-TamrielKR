@@ -1,18 +1,19 @@
-# pChat Korean Patch
+# pChat - Korean Patch
 
-덮어쓰기용 한국어 패치입니다.
+이 패키지는 Minion/ESOUI 배포를 위한 독립 한국어 패치 애드온입니다.
 
-## 대상 애드온
-- `pChat`
+## 설치 방법
+
+1. 원본 애드온 `pChat`를 먼저 설치합니다.
+2. 이 패키지를 `AddOns` 폴더에 별도 폴더로 풀어 설치합니다.
+3. TamrielKR 환경에서는 한국어일 때만 자동 적용됩니다.
 
 ## 포함 파일
+
 - `pChat/i18n/kr.lua`
 
-## 적용 방법
-1. `pChat` 원본 애드온이 설치되어 있어야 합니다.
-2. 이 패치의 `pChat` 폴더를 ESO `live/AddOns` 경로에 그대로 덮어씁니다.
-3. 게임에서 `/reloadui`를 실행합니다.
+## 비고
 
-## 메모
-- `pChat.txt`가 이미 `i18n/$(language).lua`를 로드하므로 `kr.lua`만 추가해도 한국어 로케일이 붙습니다.
-- `DOCS/addon-language-compatibility.md` 기준으로, 이번 패치는 Lua `GetCVar` 훅 수정 없이 엔진 레벨 언어 파일 추가 방식으로 작업했습니다.
+- `## DependsOn: pChat` 기반으로 원본 애드온 다음에 로드됩니다.
+- 패치 파일은 비한글 환경에서 즉시 종료되도록 가드가 들어 있습니다.
+- 원본 폴더에 직접 덮어쓰지 않는 Minion 친화적 구조입니다.

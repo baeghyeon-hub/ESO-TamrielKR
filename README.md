@@ -176,24 +176,45 @@ tools\generate_slugs.bat "C:\...\game\client\slugfont.exe"
 
 ## 서드파티 애드온 한글 패치
 
-**[서드파티 한글패치 다운로드](https://github.com/baeghyeon-hub/ESO-TamrielKR/releases/tag/addon-patches-v1.0.0)** — 필요한 애드온만 골라서 다운로드 후 `AddOns\` 폴더에 덮어쓰세요.
+현재 GitHub 릴리즈 [addon-patches-v1.0.0](https://github.com/baeghyeon-hub/ESO-TamrielKR/releases/tag/addon-patches-v1.0.0) 에는 `오버라이트가 필요한 패치`만 먼저 올립니다.
+
+이 방식이 필요한 이유:
+- 일부 애드온은 설정/UI 초기화 파일을 직접 수정해야 해서, 별도 `-KR` 의존성 애드온으로 분리하면 로드 순서 문제나 재초기화 문제로 깨질 수 있습니다.
+- 이런 애드온은 현재 기준으로 `원본 애드온 폴더에 직접 덮어쓰기`가 가장 안전합니다.
+
+### 오버라이트 전용 다운로드
+
+원본 애드온을 먼저 설치한 뒤, 아래 zip을 받아 기존 애드온 폴더에 덮어쓰세요.
 
 | 애드온 | 설명 |
 |---|---|
-| [ActionDurationReminder](https://github.com/baeghyeon-hub/ESO-TamrielKR/releases/download/addon-patches-v1.0.0/ActionDurationReminder-KR-Minion.zip) | 버프/디버프 지속시간 알림 |
-| [Azurah](https://github.com/baeghyeon-hub/ESO-TamrielKR/releases/download/addon-patches-v1.0.0/Azurah-KR-Minion.zip) | UI 커스터마이징 |
-| [BanditsUserInterface](https://github.com/baeghyeon-hub/ESO-TamrielKR/releases/download/addon-patches-v1.0.0/BanditsUserInterface-KR-Minion.zip) | 올인원 UI 개선 |
-| [Destinations](https://github.com/baeghyeon-hub/ESO-TamrielKR/releases/download/addon-patches-v1.0.0/Destinations-KR-Minion.zip) | 목적지/여행 가이드 |
-| [DolgubonsLazyWritCreator](https://github.com/baeghyeon-hub/ESO-TamrielKR/releases/download/addon-patches-v1.0.0/DolgubonsLazyWritCreator-KR-Minion.zip) | 일일/거장 제작 의뢰 자동화 |
-| [FancyActionBar+](https://github.com/baeghyeon-hub/ESO-TamrielKR/releases/download/addon-patches-v1.0.0/FancyActionBarPlus-KR-Minion.zip) | 액션바 강화 |
-| [HarvestMap](https://github.com/baeghyeon-hub/ESO-TamrielKR/releases/download/addon-patches-v1.0.0/HarvestMap-KR-Minion.zip) | 채집 위치 지도 |
-| [LibAddonMenu-2.0](https://github.com/baeghyeon-hub/ESO-TamrielKR/releases/download/addon-patches-v1.0.0/LibAddonMenu-2.0-KR-Minion.zip) | 애드온 설정 메뉴 라이브러리 |
-| [LibSavedVars](https://github.com/baeghyeon-hub/ESO-TamrielKR/releases/download/addon-patches-v1.0.0/LibSavedVars-KR-Minion.zip) | 저장 변수 라이브러리 |
-| [LostTreasure](https://github.com/baeghyeon-hub/ESO-TamrielKR/releases/download/addon-patches-v1.0.0/LostTreasure-KR-Minion.zip) | 보물 지도 위치 |
-| [pChat](https://github.com/baeghyeon-hub/ESO-TamrielKR/releases/download/addon-patches-v1.0.0/pChat-KR-Minion.zip) | 채팅 기능 강화 |
-| [TamrielTradeCentre (TTC)](https://github.com/baeghyeon-hub/ESO-TamrielKR/releases/download/addon-patches-v1.0.0/TamrielTradeCentre-KR-Minion.zip) | 거래소 가격 검색 |
-| [USPF](https://github.com/baeghyeon-hub/ESO-TamrielKR/releases/download/addon-patches-v1.0.0/USPF-KR-Minion.zip) | 스킬/CP 세팅 공유 |
-| [VotansMiniMap](https://github.com/baeghyeon-hub/ESO-TamrielKR/releases/download/addon-patches-v1.0.0/VotansMiniMap-KR-Minion.zip) | 미니맵 |
+| [BanditsUserInterface](https://github.com/baeghyeon-hub/ESO-TamrielKR/releases/download/addon-patches-v1.0.0/BanditsUserInterface-KR-Overwrite.zip) | 올인원 UI 개선 |
+| [FancyActionBar+](https://github.com/baeghyeon-hub/ESO-TamrielKR/releases/download/addon-patches-v1.0.0/FancyActionBarPlus-KR-Overwrite.zip) | 액션바 강화 |
+| [LibAddonMenu-2.0](https://github.com/baeghyeon-hub/ESO-TamrielKR/releases/download/addon-patches-v1.0.0/LibAddonMenu-2.0-KR-Overwrite.zip) | 애드온 설정 메뉴 라이브러리 |
+| [USPF](https://github.com/baeghyeon-hub/ESO-TamrielKR/releases/download/addon-patches-v1.0.0/USPF-KR-Overwrite.zip) | 스킬/CP 세팅 공유 |
+| [VotansMiniMap](https://github.com/baeghyeon-hub/ESO-TamrielKR/releases/download/addon-patches-v1.0.0/VotansMiniMap-KR-Overwrite.zip) | 미니맵 |
+
+### Minion / ESOUI 순차 재배포 예정
+
+아래 애드온은 별도 `-KR` 애드온으로 분리 가능한 구조라, ESOUI 등록 후 Minion에서 순차적으로 재배포할 예정입니다.
+
+이 방식이 필요한 이유:
+- 원본 애드온이 업데이트돼도 한국어 패치 파일이 지워지지 않습니다.
+- Minion은 GitHub 릴리즈가 아니라 `ESOUI 등록 애드온` 기준으로 배포를 인식합니다.
+- 따라서 GitHub zip만 올리는 것보다, `ESOUI 등록 -> Minion 배포` 흐름이 장기적으로 안전합니다.
+
+| 애드온 | 상태 |
+|---|---|
+| ActionDurationReminder | ESOUI/Minion 순차 전환 예정 |
+| Azurah | ESOUI/Minion 순차 전환 예정 |
+| CrutchAlerts | ESOUI/Minion 순차 전환 예정 |
+| Destinations | ESOUI/Minion 순차 전환 예정 |
+| DolgubonsLazyWritCreator | ESOUI/Minion 순차 전환 예정 |
+| HarvestMap | ESOUI/Minion 순차 전환 예정 |
+| LibSavedVars | ESOUI/Minion 순차 전환 예정 |
+| LostTreasure | ESOUI/Minion 순차 전환 예정 |
+| pChat | ESOUI/Minion 순차 전환 예정 |
+| TamrielTradeCentre (TTC) | ESOUI/Minion 순차 전환 예정 |
 
 ---
 

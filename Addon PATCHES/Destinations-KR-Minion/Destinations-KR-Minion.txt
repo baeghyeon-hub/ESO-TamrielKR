@@ -1,0 +1,11 @@
+## Title: Destinations - Korean Patch
+## Description: Standalone Korean patch for Destinations.
+## Version: 1.0.0
+## AddOnVersion: 10000
+## Author: TamrielKR
+## APIVersion: 101049
+## DependsOn: Destinations
+## OptionalDependsOn: TamrielKR
+
+Destinations/data/kr/DestinationsCollectibles_kr.lua
+Destinations/data/kr/DestinationsSettings_kr.lua

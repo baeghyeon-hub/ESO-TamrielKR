@@ -1,19 +1,20 @@
-# FancyActionBar+ KR Minion Patch
+# FancyActionBar+ - Korean Patch
 
-이 패키지는 `FancyActionBar+` 원본 폴더에 덮어쓰는 한국어 패치입니다.
+이 패키지는 현재 독립 `-KR` 애드온으로는 안전하지 않아 원본 폴더에 덮어써야 하는 한국어 패치입니다.
+
+## 설치 방법
+
+1. 원본 애드온 `FancyActionBar+`를 먼저 설치합니다.
+2. 게임을 종료합니다.
+3. 압축 안의 `FancyActionBar+` 폴더 내용을 `AddOns` 안의 원본 `FancyActionBar+` 폴더에 덮어씁니다.
+4. 원본 애드온만 켜고, 별도 `-KR` 애드온처럼 설치하지 않습니다.
 
 ## 포함 파일
 
-- `FancyActionBar+/menu.lua`
 - `FancyActionBar+/lang/kr.lua`
+- `FancyActionBar+/menu.lua`
 
-## 설치 방식
+## 비고
 
-압축본 `FancyActionBarPlus-KR-Minion.zip` 안의 루트는 `FancyActionBar+` 폴더입니다.
-
-기존 `FancyActionBar+` 폴더 위에 그대로 덮어쓰면 됩니다.
-
-## 메모
-
-- `lang/kr.lua`는 TTC 호환 문서 기준의 `language.2` 환경과 함께 동작하도록 구성했습니다.
-- `menu.lua`에는 KR 메뉴 표시 레이어와 잔여 영문 툴팁 번역이 포함되어 있습니다.
+- 이 패치는 원본 핵심 파일 일부를 직접 교체합니다.
+- Minion 독립 패치 애드온으로 분리하면 초기화 순서나 전역 상태 재생성 때문에 문제가 날 수 있습니다.

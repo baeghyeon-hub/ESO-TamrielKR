@@ -1,3 +1,17 @@
+local function TamrielKR_IsKoreanClient()
+	if TamrielKR and TamrielKR.GetLanguage then
+		local ok, lang = pcall(TamrielKR.GetLanguage, TamrielKR)
+		if ok and lang == "kr" then
+			return true
+		end
+	end
+	return GetCVar("language.2") == "kr"
+end
+
+if not TamrielKR_IsKoreanClient() then
+	return
+end
+
 SafeAddString(PCHAT_Tab1, "채팅 탭 1 선택", 1)
 SafeAddString(PCHAT_Tab2, "채팅 탭 2 선택", 1)
 SafeAddString(PCHAT_Tab3, "채팅 탭 3 선택", 1)

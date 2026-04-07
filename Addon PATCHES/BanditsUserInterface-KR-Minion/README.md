@@ -1,13 +1,25 @@
-﻿# BanditsUserInterface Korean Patch
+# BanditsUserInterface - Korean Patch
 
-대상 애드온: `BanditsUserInterface`
+이 패키지는 현재 독립 `-KR` 애드온으로는 안전하지 않아 원본 폴더에 덮어써야 하는 한국어 패치입니다.
 
-포함 내용:
-- `lang/kr.lua` 추가 및 한국어 문자열 보강
-- Bandits 자체 설정 메뉴 한글화
-- 하드코딩 드롭다운/버튼/알림 문구 한글화
-- TamrielKR 환경에서 실제 언어를 `kr`로 인식하도록 초기화 보강
+## 설치 방법
 
-설치:
-1. `BanditsUserInterface` 애드온이 설치된 상태에서 이 패치의 `BanditsUserInterface` 폴더 내용을 기존 애드온 폴더에 덮어씁니다.
-2. 게임에서 `/reloadui`를 실행합니다.
+1. 원본 애드온 `BanditsUserInterface`를 먼저 설치합니다.
+2. 게임을 종료합니다.
+3. 압축 안의 `BanditsUserInterface` 폴더 내용을 `AddOns` 안의 원본 `BanditsUserInterface` 폴더에 덮어씁니다.
+4. 원본 애드온만 켜고, 별도 `-KR` 애드온처럼 설치하지 않습니다.
+
+## 포함 파일
+
+- `BanditsUserInterface/BUI_Vars.lua`
+- `BanditsUserInterface/BUI_Controls.lua`
+- `BanditsUserInterface/BUI_Menu.lua`
+- `BanditsUserInterface/BUI_Settings.lua`
+- `BanditsUserInterface/BUI_Automation.lua`
+- `BanditsUserInterface/BUI_Initialize.lua`
+- `BanditsUserInterface/lang/kr.lua`
+
+## 비고
+
+- 이 패치는 원본 핵심 파일 일부를 직접 교체합니다.
+- Minion 독립 패치 애드온으로 분리하면 초기화 순서나 전역 상태 재생성 때문에 문제가 날 수 있습니다.

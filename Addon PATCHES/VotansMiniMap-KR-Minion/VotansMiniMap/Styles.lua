@@ -1,3 +1,17 @@
+local function TamrielKR_IsKoreanClient()
+	if TamrielKR and TamrielKR.GetLanguage then
+		local ok, lang = pcall(TamrielKR.GetLanguage, TamrielKR)
+		if ok and lang == "kr" then
+			return true
+		end
+	end
+	return GetCVar("language.2") == "kr"
+end
+
+if not TamrielKR_IsKoreanClient() then
+	return
+end
+
 local self = VOTANS_MINIMAP
 
 self:AddBorderStyle("Default", GetString(SI_VOTANSMINIMAP_BORDER_STYLE_DEFAULT), function(settings, background, frame)

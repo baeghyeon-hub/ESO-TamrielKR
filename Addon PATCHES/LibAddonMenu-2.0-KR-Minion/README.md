@@ -1,12 +1,19 @@
-# LibAddonMenu-2.0 KR Minion Patch
+# LibAddonMenu-2.0 - Korean Patch
 
-Adds a native `kr` localization block to `LibAddonMenu-2.0`.
+이 패키지는 현재 독립 `-KR` 애드온으로는 안전하지 않아 원본 폴더에 덮어써야 하는 한국어 패치입니다.
 
-Included files:
+## 설치 방법
+
+1. 원본 애드온 `LibAddonMenu-2.0`를 먼저 설치합니다.
+2. 게임을 종료합니다.
+3. 압축 안의 `LibAddonMenu-2.0` 폴더 내용을 `AddOns` 안의 원본 `LibAddonMenu-2.0` 폴더에 덮어씁니다.
+4. 원본 애드온만 켜고, 별도 `-KR` 애드온처럼 설치하지 않습니다.
+
+## 포함 파일
+
 - `LibAddonMenu-2.0/LibAddonMenu-2.0.lua`
 
-Install:
-- Merge the packaged `LibAddonMenu-2.0` folder into your existing `LibAddonMenu-2.0` addon folder.
+## 비고
 
-Notes:
-- This patch localizes shared strings such as `Visit Website` and reload warnings for addons that use LibAddonMenu.
+- 이 패치는 원본 핵심 파일 일부를 직접 교체합니다.
+- Minion 독립 패치 애드온으로 분리하면 초기화 순서나 전역 상태 재생성 때문에 문제가 날 수 있습니다.

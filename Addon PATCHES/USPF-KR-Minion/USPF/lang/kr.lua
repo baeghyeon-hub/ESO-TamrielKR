@@ -1,3 +1,17 @@
+local function TamrielKR_IsKoreanClient()
+	if TamrielKR and TamrielKR.GetLanguage then
+		local ok, lang = pcall(TamrielKR.GetLanguage, TamrielKR)
+		if ok and lang == "kr" then
+			return true
+		end
+	end
+	return GetCVar("language.2") == "kr"
+end
+
+if not TamrielKR_IsKoreanClient() then
+	return
+end
+
 SafeAddString(USPF_SETTINGS_FONT_TITLE, "글꼴 설정")
 SafeAddString(USPF_SETTINGS_FONT_TITLE_HEADER, "제목/하단 글꼴")
 SafeAddString(USPF_SETTINGS_FONT_TITLE_DESC, "표의 제목과 하단 영역 글꼴을 설정합니다.")

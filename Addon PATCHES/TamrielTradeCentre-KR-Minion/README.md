@@ -1,19 +1,20 @@
-# TamrielTradeCentre KR Minion Patch
+# TamrielTradeCentre - Korean Patch
 
-이 패키지는 `TamrielTradeCentre` 원본 폴더에 덮어쓰는 한국어 패치입니다.
+이 패키지는 Minion/ESOUI 배포를 위한 독립 한국어 패치 애드온입니다.
+
+## 설치 방법
+
+1. 원본 애드온 `TamrielTradeCentre`를 먼저 설치합니다.
+2. 이 패키지를 `AddOns` 폴더에 별도 폴더로 풀어 설치합니다.
+3. TamrielKR 환경에서는 한국어일 때만 자동 적용됩니다.
 
 ## 포함 파일
 
-- `TamrielTradeCentre/lang/kr.lua`
 - `TamrielTradeCentre/ItemLookUpTable_kr.lua`
+- `TamrielTradeCentre/lang/kr.lua`
 
-## 설치 방식
+## 비고
 
-압축본 `TamrielTradeCentre-KR-Minion.zip` 안의 루트는 `TamrielTradeCentre` 폴더입니다.
-
-기존 `TamrielTradeCentre` 폴더 위에 그대로 덮어쓰면 됩니다.
-
-## 메모
-
-- 설정 UI, 가격 툴팁, 기본 KR 문자열이 포함되어 있습니다.
-- `ItemLookUpTable_kr.lua`는 `$(language)` 확장 호환을 위해 포함했습니다.
+- `## DependsOn: TamrielTradeCentre` 기반으로 원본 애드온 다음에 로드됩니다.
+- 패치 파일은 비한글 환경에서 즉시 종료되도록 가드가 들어 있습니다.
+- 원본 폴더에 직접 덮어쓰지 않는 Minion 친화적 구조입니다.
