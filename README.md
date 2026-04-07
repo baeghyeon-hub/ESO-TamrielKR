@@ -184,7 +184,10 @@ tools\generate_slugs.bat "C:\...\game\client\slugfont.exe"
 
 ### 오버라이트 전용 다운로드
 
-원본 애드온을 먼저 설치한 뒤, 아래 zip을 받아 기존 애드온 폴더에 덮어쓰세요.
+설치 순서:
+- 기존에 설치해 둔 해당 애드온 폴더가 있으면 먼저 삭제합니다.
+- 원본 애드온 최신 버전을 다시 받아 `AddOns\` 폴더에 새로 설치합니다.
+- 아래 KR 패치 zip을 받아 압축 해제 후, 같은 이름의 원본 애드온 폴더에 덮어씁니다.
 
 | 애드온 | 설명 |
 |---|---|
@@ -193,6 +196,21 @@ tools\generate_slugs.bat "C:\...\game\client\slugfont.exe"
 | [LibAddonMenu-2.0](https://github.com/baeghyeon-hub/ESO-TamrielKR/releases/download/addon-patches-v1.0.0/LibAddonMenu-2.0-KR-Overwrite.zip) | 애드온 설정 메뉴 라이브러리 |
 | [USPF](https://github.com/baeghyeon-hub/ESO-TamrielKR/releases/download/addon-patches-v1.0.0/USPF-KR-Overwrite.zip) | 스킬/CP 세팅 공유 |
 | [VotansMiniMap](https://github.com/baeghyeon-hub/ESO-TamrielKR/releases/download/addon-patches-v1.0.0/VotansMiniMap-KR-Overwrite.zip) | 미니맵 |
+
+### GitHub 선배포 다운로드
+
+아래 3개 애드온은 사용 체감이 큰 편이라, ESOUI/Minion 전환 전에 GitHub 릴리즈에서 먼저 직접 배포합니다.
+
+설치 순서:
+- 기존에 설치해 둔 해당 원본 애드온 폴더와 이전 `-KR` 패치 폴더가 있으면 먼저 삭제합니다.
+- 원본 애드온 최신 버전을 다시 받아 `AddOns\` 폴더에 새로 설치합니다.
+- 아래 KR 패치 zip을 받아 압축 해제 후, `AddOns\` 폴더에 그대로 추가합니다.
+
+| 애드온 | 설명 |
+|---|---|
+| [CrutchAlerts](https://github.com/baeghyeon-hub/ESO-TamrielKR/releases/download/addon-patches-v1.0.0/CrutchAlerts-KR-Minion.zip) | 트라이얼/던전 전투 경고 |
+| [DolgubonsLazyWritCreator](https://github.com/baeghyeon-hub/ESO-TamrielKR/releases/download/addon-patches-v1.0.0/DolgubonsLazyWritCreator-KR-Minion.zip) | 일일/거장 제작 의뢰 자동화 |
+| [TamrielTradeCentre (TTC)](https://github.com/baeghyeon-hub/ESO-TamrielKR/releases/download/addon-patches-v1.0.0/TamrielTradeCentre-KR-Minion.zip) | 거래소 가격 검색 |
 
 ### Minion / ESOUI 순차 재배포 예정
 
@@ -207,14 +225,14 @@ tools\generate_slugs.bat "C:\...\game\client\slugfont.exe"
 |---|---|
 | ActionDurationReminder | ESOUI/Minion 순차 전환 예정 |
 | Azurah | ESOUI/Minion 순차 전환 예정 |
-| CrutchAlerts | ESOUI/Minion 순차 전환 예정 |
 | Destinations | ESOUI/Minion 순차 전환 예정 |
-| DolgubonsLazyWritCreator | ESOUI/Minion 순차 전환 예정 |
 | HarvestMap | ESOUI/Minion 순차 전환 예정 |
 | LibSavedVars | ESOUI/Minion 순차 전환 예정 |
 | LostTreasure | ESOUI/Minion 순차 전환 예정 |
 | pChat | ESOUI/Minion 순차 전환 예정 |
-| TamrielTradeCentre (TTC) | ESOUI/Minion 순차 전환 예정 |
+| CrutchAlerts | GitHub 선배포 후 ESOUI/Minion 전환 예정 |
+| DolgubonsLazyWritCreator | GitHub 선배포 후 ESOUI/Minion 전환 예정 |
+| TamrielTradeCentre (TTC) | GitHub 선배포 후 ESOUI/Minion 전환 예정 |
 
 ---
 
