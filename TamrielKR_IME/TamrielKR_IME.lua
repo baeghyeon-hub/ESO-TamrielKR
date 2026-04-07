@@ -97,6 +97,15 @@ local function ShowStatus(msg)
 end
 
 -- ============================================================
+-- P4 (Bridge 연동): IME 조합 상태를 외부에서 확인할 수 있도록 전역 노출
+-- Bridge의 송신 인코딩이 IME 조합 중에 개입하지 않도록 하기 위함
+-- ============================================================
+
+function TamrielKR_IME_IsComposing()
+  return IME.enabled and IME.composer and IME.composer.state ~= "EMPTY"
+end
+
+-- ============================================================
 -- Toggle IME on/off
 -- ============================================================
 

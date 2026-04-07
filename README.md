@@ -184,6 +184,7 @@ tools\generate_slugs.bat "C:\...\game\client\slugfont.exe"
 | [Azurah](https://github.com/baeghyeon-hub/ESO-TamrielKR/releases/download/addon-patches-v1.0.0/Azurah-KR-Minion.zip) | UI 커스터마이징 |
 | [BanditsUserInterface](https://github.com/baeghyeon-hub/ESO-TamrielKR/releases/download/addon-patches-v1.0.0/BanditsUserInterface-KR-Minion.zip) | 올인원 UI 개선 |
 | [Destinations](https://github.com/baeghyeon-hub/ESO-TamrielKR/releases/download/addon-patches-v1.0.0/Destinations-KR-Minion.zip) | 목적지/여행 가이드 |
+| [DolgubonsLazyWritCreator](https://github.com/baeghyeon-hub/ESO-TamrielKR/releases/download/addon-patches-v1.0.0/DolgubonsLazyWritCreator-KR-Minion.zip) | 일일/거장 제작 의뢰 자동화 |
 | [FancyActionBar+](https://github.com/baeghyeon-hub/ESO-TamrielKR/releases/download/addon-patches-v1.0.0/FancyActionBarPlus-KR-Minion.zip) | 액션바 강화 |
 | [HarvestMap](https://github.com/baeghyeon-hub/ESO-TamrielKR/releases/download/addon-patches-v1.0.0/HarvestMap-KR-Minion.zip) | 채집 위치 지도 |
 | [LibAddonMenu-2.0](https://github.com/baeghyeon-hub/ESO-TamrielKR/releases/download/addon-patches-v1.0.0/LibAddonMenu-2.0-KR-Minion.zip) | 애드온 설정 메뉴 라이브러리 |

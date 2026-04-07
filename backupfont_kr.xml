@@ -13,6 +13,8 @@
     <BackupFont originalFont="TamrielKR/fonts/kr_maruburi_cnkr.slug" backupFont="$(FTN87_FONT)"/>
     <BackupFont originalFont="TamrielKR/fonts/kr_maruburi.slug" backupFont="TamrielKR/fonts/kr_maruburi_cnkr.slug"/>
     <BackupFont originalFont="TamrielKR/fonts/kr_jalnan.slug" backupFont="TamrielKR/fonts/kr_maruburi_cnkr.slug"/>
+    <BackupFont originalFont="TamrielKR/fonts/kr_gothic.slug" backupFont="TamrielKR/fonts/kr_maruburi_cnkr.slug"/>
+    <BackupFont originalFont="TamrielKR/fonts/kr_gothic_bold.slug" backupFont="TamrielKR/fonts/kr_maruburi_cnkr.slug"/>
 
     <BackupFont originalFont="$(FTN47_FONT)" backupFont="TamrielKR/fonts/kr_maruburi_cnkr.slug"/>
     <BackupFont originalFont="$(TRAJAN_PRO_R_FONT)" backupFont="TamrielKR/fonts/kr_maruburi_cnkr.slug"/>
