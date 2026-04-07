@@ -1,0 +1,64 @@
+name: ESOUI Upload TTC KR
+
+on:
+  workflow_dispatch:
+    inputs:
+      addon_id:
+        description: "ESOUI addon ID for TamrielTradeCentre-KR-Minion (manual upload once first)"
+        required: true
+        type: string
+      version:
+        description: "ESOUI version string"
+        required: true
+        default: "1.0.0"
+        type: string
+      compatibility:
+        description: "Optional ESO compatibility string, e.g. 11.1.0"
+        required: false
+        default: ""
+        type: string
+      test:
+        description: "Use ESOUI test API"
+        required: true
+        default: true
+        type: boolean
+
+jobs:
+  upload:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Rebuild patch packages
+        run: python tools/rebuild_minion_patch_packages.py
+
+      - name: Prepare metadata
+        shell: bash
+        run: |
+          echo "ZIP_FILE=Addon PATCHES/TamrielTradeCentre-KR-Minion.zip" >> "$GITHUB_ENV"
+          echo "CHANGELOG_FILE=Addon PATCHES/TamrielTradeCentre-KR-Minion/CHANGELOG_ESOUI.md" >> "$GITHUB_ENV"
+          echo "DESCRIPTION_FILE=Addon PATCHES/TamrielTradeCentre-KR-Minion/README_ESOUI.txt" >> "$GITHUB_ENV"
+
+      - name: Show package details
+        shell: bash
+        run: |
+          ls -lah "$ZIP_FILE"
+          unzip -l "$ZIP_FILE"
+
+      - name: Upload to ESOUI
+        uses: m00nyONE/esoui-upload@v2
+        with:
+          api_key: ${{ secrets.ESOUI_API_KEY }}
+          addon_id: ${{ inputs.addon_id }}
+          version: ${{ inputs.version }}
+          zip_file: ${{ env.ZIP_FILE }}
+          changelog_file: ${{ env.CHANGELOG_FILE }}
+          description_file: ${{ env.DESCRIPTION_FILE }}
+          compatibility: ${{ inputs.compatibility }}
+          test: ${{ inputs.test }}
