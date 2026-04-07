@@ -1,13 +1,13 @@
 <GuiXml>
-    <!-- TamrielKR slug → ESO 원본 폰트 (확장 라틴/특수문자 보완) -->
-    <!-- ESO 원본 → 한글 slug 체이닝은 아래 섹션에서 정의됨 -->
-    <BackupFont originalFont="TamrielKR/fonts/ftn47.slug" backupFont="$(FTN47_FONT)"/>
-    <BackupFont originalFont="TamrielKR/fonts/ftn57.slug" backupFont="$(FTN57_FONT)"/>
-    <BackupFont originalFont="TamrielKR/fonts/ftn87.slug" backupFont="$(FTN87_FONT)"/>
-    <BackupFont originalFont="TamrielKR/fonts/proseantiquepsmt.slug" backupFont="$(PROSE_ANTIQUE_FONT)"/>
-    <BackupFont originalFont="TamrielKR/fonts/univers47.slug" backupFont="$(UNIVERS67_FONT)"/>
-    <BackupFont originalFont="TamrielKR/fonts/univers55.slug" backupFont="$(UNIVERS55_FONT)"/>
-    <BackupFont originalFont="TamrielKR/fonts/univers57.slug" backupFont="$(UNIVERS57_FONT)"/>
+    <!-- TamrielKR slug → kr_maruburi_cnkr.slug (한글/CNKR 직접 1단계 fallback) -->
+    <!-- ESO BackupFont는 1단계만 조회하므로 반드시 직접 연결해야 함 -->
+    <BackupFont originalFont="TamrielKR/fonts/ftn47.slug" backupFont="TamrielKR/fonts/kr_maruburi_cnkr.slug"/>
+    <BackupFont originalFont="TamrielKR/fonts/ftn57.slug" backupFont="TamrielKR/fonts/kr_maruburi_cnkr.slug"/>
+    <BackupFont originalFont="TamrielKR/fonts/ftn87.slug" backupFont="TamrielKR/fonts/kr_maruburi_cnkr.slug"/>
+    <BackupFont originalFont="TamrielKR/fonts/proseantiquepsmt.slug" backupFont="TamrielKR/fonts/kr_maruburi_cnkr.slug"/>
+    <BackupFont originalFont="TamrielKR/fonts/univers47.slug" backupFont="TamrielKR/fonts/kr_maruburi_cnkr.slug"/>
+    <BackupFont originalFont="TamrielKR/fonts/univers55.slug" backupFont="TamrielKR/fonts/kr_maruburi_cnkr.slug"/>
+    <BackupFont originalFont="TamrielKR/fonts/univers57.slug" backupFont="TamrielKR/fonts/kr_maruburi_cnkr.slug"/>
 
     <!-- 한글 slug → ESO 원본 폰트 fallback (확장 라틴 글리프 보완) -->
     <BackupFont originalFont="TamrielKR/fonts/kr_maruburi_cnkr.slug" backupFont="$(FTN87_FONT)"/>
