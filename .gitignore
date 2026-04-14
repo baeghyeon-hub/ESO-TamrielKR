@@ -16,9 +16,6 @@ Addon PATCHES/*.zip
 # Internal docs
 DOCS/
 
-# Claude Code
-.claude/
-
 # OS junk
 .DS_Store
 Thumbs.db
